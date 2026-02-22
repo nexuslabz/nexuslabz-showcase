@@ -6,10 +6,10 @@
   </picture>
 </p>
 
-<h1 align="center">NexusLabz Showcase</h1>
+<h1 align="center">Showcase</h1>
 
 <p align="center">
-  Centralized repository for all NexusLabz presentations.<br/>
+  Centralized repository for all Nexus Labz presentations.<br/>
   Each presentation is an independent project within a monorepo, built with <a href="https://sli.dev/">Slidev</a> (Vue 3 + Vite) and published as static HTML via GitHub Pages.
 </p>
 
@@ -162,4 +162,4 @@ Second slide content.
 
 ## License
 
-Internal use only — NexusLabz. All rights reserved.
+Internal use only — Nexus Labz. All rights reserved.
