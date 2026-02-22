@@ -160,116 +160,140 @@
         text-align: center;
       }
 
-      /* Language Switcher */
-      .lang-switcher {
+      /* Language Switcher — mirrors LanguageSwitcher.vue */
+      .lang-dd {
         position: fixed;
         top: 1rem;
-        right: 1.5rem;
+        right: 1rem;
         z-index: 100;
       }
 
-      .lang-trigger {
+      .lang-dd__trigger {
         display: flex;
         align-items: center;
         gap: 0.4rem;
-        padding: 0.4rem 0.7rem;
-        background: rgba(30, 31, 24, 0.9);
-        border: 1px solid var(--nexus-grey-lighter);
-        border-radius: 6px;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.72rem;
-        font-family: inherit;
+        padding: 0.4rem 0.6rem;
+        background: rgba(19, 20, 15, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
         cursor: pointer;
-        backdrop-filter: blur(8px);
-        transition:
-          border-color 0.2s,
-          color 0.2s;
+        color: rgba(255, 255, 255, 0.6);
+        font-family: inherit;
+        transition: all 0.2s ease;
       }
 
-      .lang-trigger:hover {
-        border-color: var(--neon-gold-dim);
-        color: var(--pure-white);
+      .lang-dd__trigger:hover {
+        border-color: rgba(212, 175, 55, 0.3);
+        color: rgba(255, 255, 255, 0.85);
       }
 
-      .lang-trigger svg {
-        width: 16px;
-        height: 12px;
+      .lang-dd--open .lang-dd__trigger {
+        border-color: rgba(212, 175, 55, 0.4);
+      }
+
+      .lang-dd__flag {
+        width: 20px;
+        height: 14px;
         border-radius: 2px;
         flex-shrink: 0;
       }
 
-      .lang-chevron {
-        width: 10px !important;
-        height: 10px !important;
-        transition: transform 0.2s;
+      .lang-dd__label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
       }
 
-      .lang-switcher.open .lang-chevron {
+      .lang-dd__chevron {
+        width: 12px;
+        height: 12px;
+        transition: transform 0.2s ease;
+        opacity: 0.5;
+      }
+
+      .lang-dd--open .lang-dd__chevron {
         transform: rotate(180deg);
       }
 
-      .lang-menu {
+      .lang-dd__menu {
         position: absolute;
-        top: calc(100% + 6px);
+        top: calc(100% + 0.35rem);
         right: 0;
-        background: rgba(30, 31, 24, 0.95);
-        border: 1px solid var(--nexus-grey-lighter);
-        border-radius: 6px;
-        overflow: hidden;
-        backdrop-filter: blur(12px);
+        min-width: 100%;
+        background: rgba(19, 20, 15, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 0.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         opacity: 0;
-        transform: translateY(-4px);
+        transform: translateY(-4px) scale(0.97);
         pointer-events: none;
         transition:
-          opacity 0.15s,
-          transform 0.15s;
+          opacity 0.15s ease-out,
+          transform 0.15s ease-out;
       }
 
-      .lang-switcher.open .lang-menu {
+      .lang-dd--open .lang-dd__menu {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         pointer-events: auto;
       }
 
-      .lang-option {
+      .lang-dd__option {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 0.8rem;
-        width: 100%;
+        gap: 0.45rem;
+        padding: 0.45rem 0.6rem;
         border: none;
-        background: none;
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 0.72rem;
-        font-family: inherit;
+        border-radius: 6px;
+        background: transparent;
         cursor: pointer;
-        transition: background 0.15s;
+        color: rgba(255, 255, 255, 0.55);
+        font-family: inherit;
+        transition: all 0.15s ease;
         white-space: nowrap;
       }
 
-      .lang-option:hover {
-        background: rgba(255, 255, 255, 0.05);
+      .lang-dd__option:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.85);
       }
 
-      .lang-option.active {
+      .lang-dd__option--active {
         color: var(--neon-gold);
       }
 
-      .lang-option svg {
-        width: 16px;
-        height: 12px;
-        border-radius: 2px;
+      .lang-dd__option-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        flex: 1;
+      }
+
+      .lang-dd__check {
+        color: var(--neon-gold);
         flex-shrink: 0;
       }
     </style>
   </head>
   <body>
-    <div class="lang-switcher" id="langSwitcher">
-      <button class="lang-trigger" id="langTrigger">
-        <svg id="flagCurrent" viewBox="0 0 640 480"></svg>
-        <span id="langLabel">EN</span>
+    <div class="lang-dd" id="langDD">
+      <button class="lang-dd__trigger" id="langTrigger">
+        <svg class="lang-dd__flag" id="flagCurrent" viewBox="0 0 640 480"></svg>
+        <span class="lang-dd__label" id="langLabel">EN</span>
         <svg
-          class="lang-chevron"
+          class="lang-dd__chevron"
+          width="12"
+          height="12"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -278,14 +302,25 @@
           <path d="M6 9l6 6 6-6" />
         </svg>
       </button>
-      <div class="lang-menu" id="langMenu">
-        <button class="lang-option active" data-lang="en">
-          <svg viewBox="0 0 640 480"></svg>
-          EN
+      <div class="lang-dd__menu" id="langMenu">
+        <button class="lang-dd__option lang-dd__option--active" data-lang="en">
+          <svg class="lang-dd__flag" id="flagEN" viewBox="0 0 640 480"></svg>
+          <span class="lang-dd__option-label">EN</span>
+          <svg
+            class="lang-dd__check"
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="3"
+          >
+            <path d="M5 12l5 5L20 7" />
+          </svg>
         </button>
-        <button class="lang-option" data-lang="pt">
-          <svg viewBox="0 0 640 480"></svg>
-          BR
+        <button class="lang-dd__option" data-lang="pt">
+          <svg class="lang-dd__flag" id="flagBR" viewBox="0 0 640 480"></svg>
+          <span class="lang-dd__option-label">BR</span>
         </button>
       </div>
     </div>
@@ -392,32 +427,40 @@
 
     <script>
       (function () {
-        const US_FLAG =
-          '<rect width="640" height="480" fill="#bd3d44"/><path d="M0 55.3h640M0 129h640M0 203h640M0 277h640M0 351h640M0 424h640" stroke="#fff" stroke-width="37"/><rect width="364" height="258" fill="#192f5d"/>';
-        const BR_FLAG =
-          '<rect width="640" height="480" fill="#009b3a"/><polygon points="320,40 600,240 320,440 40,240" fill="#fedf00"/><circle cx="320" cy="240" r="90" fill="#002776"/>';
+        var US_FLAG =
+          '<rect width="640" height="480" fill="#bd3d44"/><rect y="37" width="640" height="37" fill="#fff"/><rect y="111" width="640" height="37" fill="#fff"/><rect y="185" width="640" height="37" fill="#fff"/><rect y="259" width="640" height="37" fill="#fff"/><rect y="333" width="640" height="37" fill="#fff"/><rect y="407" width="640" height="37" fill="#fff"/><rect width="260" height="260" fill="#192f5d"/><g fill="#fff"><circle cx="26" cy="20" r="6"/><circle cx="78" cy="20" r="6"/><circle cx="130" cy="20" r="6"/><circle cx="182" cy="20" r="6"/><circle cx="234" cy="20" r="6"/><circle cx="52" cy="46" r="6"/><circle cx="104" cy="46" r="6"/><circle cx="156" cy="46" r="6"/><circle cx="208" cy="46" r="6"/><circle cx="26" cy="72" r="6"/><circle cx="78" cy="72" r="6"/><circle cx="130" cy="72" r="6"/><circle cx="182" cy="72" r="6"/><circle cx="234" cy="72" r="6"/><circle cx="52" cy="98" r="6"/><circle cx="104" cy="98" r="6"/><circle cx="156" cy="98" r="6"/><circle cx="208" cy="98" r="6"/></g>';
+        var BR_FLAG =
+          '<rect width="640" height="480" fill="#009b3a"/><polygon points="320,40 600,240 320,440 40,240" fill="#fedf00"/><circle cx="320" cy="240" r="95" fill="#002776"/><path d="M200 260 Q320 200 440 260" fill="none" stroke="#fff" stroke-width="14"/>';
+        var CHECK_SVG =
+          '<svg class="lang-dd__check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>';
 
-        const switcher = document.getElementById('langSwitcher');
-        const trigger = document.getElementById('langTrigger');
-        const flagCurrent = document.getElementById('flagCurrent');
-        const label = document.getElementById('langLabel');
-        const options = document.querySelectorAll('.lang-option');
+        var dd = document.getElementById('langDD');
+        var trigger = document.getElementById('langTrigger');
+        var flagCurrent = document.getElementById('flagCurrent');
+        var langLabel = document.getElementById('langLabel');
+        var options = document.querySelectorAll('.lang-dd__option');
 
-        const optionFlags = document.querySelectorAll('.lang-option svg');
-        optionFlags[0].innerHTML = US_FLAG;
-        optionFlags[1].innerHTML = BR_FLAG;
+        document.getElementById('flagEN').innerHTML = US_FLAG;
+        document.getElementById('flagBR').innerHTML = BR_FLAG;
 
-        let locale = localStorage.getItem('nexus-locale') || 'en';
+        var locale = localStorage.getItem('nexus-locale') || 'en';
 
         function setLocale(lang) {
           locale = lang;
           localStorage.setItem('nexus-locale', lang);
 
           flagCurrent.innerHTML = lang === 'en' ? US_FLAG : BR_FLAG;
-          label.textContent = lang === 'en' ? 'EN' : 'BR';
+          langLabel.textContent = lang === 'en' ? 'EN' : 'BR';
 
           options.forEach(function (o) {
-            o.classList.toggle('active', o.dataset.lang === lang);
+            var isActive = o.dataset.lang === lang;
+            o.classList.toggle('lang-dd__option--active', isActive);
+            var existing = o.querySelector('.lang-dd__check');
+            if (isActive && !existing) {
+              o.insertAdjacentHTML('beforeend', CHECK_SVG);
+            } else if (!isActive && existing) {
+              existing.remove();
+            }
           });
 
           document.querySelectorAll('[data-en]').forEach(function (el) {
@@ -425,15 +468,15 @@
           });
 
           document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
-          switcher.classList.remove('open');
+          dd.classList.remove('lang-dd--open');
         }
 
         trigger.addEventListener('click', function () {
-          switcher.classList.toggle('open');
+          dd.classList.toggle('lang-dd--open');
         });
 
-        document.addEventListener('click', function (e) {
-          if (!switcher.contains(e.target)) switcher.classList.remove('open');
+        document.addEventListener('pointerdown', function (e) {
+          if (!dd.contains(e.target)) dd.classList.remove('lang-dd--open');
         });
 
         options.forEach(function (o) {
