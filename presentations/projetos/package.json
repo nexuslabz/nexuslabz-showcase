@@ -1,0 +1,14 @@
+{
+  "name": "@nexuslabz/projetos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Apresentação: Projetos",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md --base /nexuslabz-showcase/projetos/"
+  },
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-default": "latest"
+  }
+}

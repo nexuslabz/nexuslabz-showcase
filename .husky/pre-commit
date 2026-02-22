@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+# 🚀 Husky pre-commit hook (visual mode com lint-staged)
+echo ""
+echo "🔵 Running lint-staged with configs..."
+echo "------------------------------------"
+
+yarn lint-staged
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "❌ Lint or format check failed. Commit aborted."
+  echo "------------------------------------"
+  exit 1
+fi
+
+echo ""
+echo "✅ All checks passed! Proceeding with commit."
+echo "------------------------------------"
+exit 0

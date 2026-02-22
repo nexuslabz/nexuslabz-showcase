@@ -1,0 +1,14 @@
+{
+  "name": "@nexuslabz/time",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Apresentação: Time",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md --base /nexuslabz-showcase/time/"
+  },
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-default": "latest"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@nexuslabz/visao-missao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Apresentação: Visão e Missão",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md --base /nexuslabz-showcase/visao-missao/"
+  },
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-default": "latest"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "@nexuslabz/resultados",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Apresentação: Resultados",
+  "scripts": {
+    "dev": "slidev slides.md --open",
+    "build": "slidev build slides.md --base /nexuslabz-showcase/resultados/"
+  },
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-default": "latest"
+  }
+}
