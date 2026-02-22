@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus Labz — Showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --nexus-grey: #13140f;
+        --nexus-grey-light: #1e1f18;
+        --nexus-grey-lighter: #2a2b22;
+        --neon-gold: #d4af37;
+        --neon-gold-dim: #b8962e;
+        --neon-gold-glow: #e8c64a;
+        --pure-white: #ffffff;
+      }
+
+      body {
+        font-family:
+          'Inter',
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background-color: var(--nexus-grey);
+        color: var(--pure-white);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .accent-bar {
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, var(--neon-gold), transparent);
+      }
+
+      .container {
+        width: 100%;
+        max-width: 720px;
+        padding: 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+      }
+
+      .logo {
+        margin-top: 4rem;
+        width: 220px;
+      }
+
+      .title {
+        margin-top: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--pure-white);
+        letter-spacing: -0.01em;
+      }
+
+      .subtitle {
+        margin-top: 0.4rem;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .grid {
+        margin-top: 3rem;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        background: var(--nexus-grey-light);
+        border: 1px solid var(--nexus-grey-lighter);
+        border-radius: 10px;
+        text-decoration: none;
+        color: var(--pure-white);
+        transition:
+          border-color 0.2s ease,
+          transform 0.15s ease;
+      }
+
+      .card:hover {
+        border-color: var(--neon-gold-dim);
+        transform: translateY(-2px);
+      }
+
+      .card-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 8px;
+        background: var(--nexus-grey-lighter);
+        flex-shrink: 0;
+        font-size: 1.2rem;
+      }
+
+      .card:hover .card-icon {
+        background: rgba(212, 175, 55, 0.12);
+      }
+
+      .card-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card-title {
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--pure-white);
+      }
+
+      .card-desc {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.45);
+        margin-top: 0.15rem;
+      }
+
+      .card-arrow {
+        margin-left: auto;
+        color: var(--neon-gold-dim);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        font-size: 1.1rem;
+      }
+
+      .card:hover .card-arrow {
+        opacity: 1;
+      }
+
+      footer {
+        margin-top: auto;
+        padding: 2.5rem 0 1.5rem;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.25);
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="accent-bar"></div>
+    <div class="container">
+      <img
+        src="https://raw.githubusercontent.com/nexuslabz/nexuslabz-showcase/main/shared/assets/logos/logo-full-no-bg-white.png"
+        alt="Nexus Labz"
+        class="logo"
+      />
+      <h1 class="title">Showcase</h1>
+      <p class="subtitle">Presentations &amp; Slide Decks</p>
+
+      <div class="grid">
+        <a href="./brand-guideline/" class="card">
+          <div class="card-icon">&#9670;</div>
+          <div class="card-info">
+            <span class="card-title">Brand Guideline</span>
+            <span class="card-desc">Identity, vision &amp; mission</span>
+          </div>
+          <span class="card-arrow">&#8594;</span>
+        </a>
+
+        <a href="./team/" class="card">
+          <div class="card-icon">&#9733;</div>
+          <div class="card-info">
+            <span class="card-title">Our Team</span>
+            <span class="card-desc">Meet the people behind Nexus Labz</span>
+          </div>
+          <span class="card-arrow">&#8594;</span>
+        </a>
+
+        <a href="./projects/" class="card">
+          <div class="card-icon">&#9881;</div>
+          <div class="card-info">
+            <span class="card-title">Projects</span>
+            <span class="card-desc">What we are building</span>
+          </div>
+          <span class="card-arrow">&#8594;</span>
+        </a>
+
+        <a href="./results/" class="card">
+          <div class="card-icon">&#9650;</div>
+          <div class="card-info">
+            <span class="card-title">Results</span>
+            <span class="card-desc">Metrics, outcomes &amp; impact</span>
+          </div>
+          <span class="card-arrow">&#8594;</span>
+        </a>
+      </div>
+
+      <footer>&copy; Nexus Labz. All rights reserved.</footer>
+    </div>
+  </body>
+</html>

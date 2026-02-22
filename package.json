@@ -2,7 +2,7 @@
   "name": "@nexuslabz/showcase",
   "version": "1.0.0",
   "private": true,
-  "description": "Centralized presentations for NexusLabz",
+  "description": "Centralized presentations for Nexus Labz",
   "workspaces": [
     "packages/*",
     "presentations/*"

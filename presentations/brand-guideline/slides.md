@@ -1,8 +1,9 @@
 ---
-title: Brand Guideline - NexusLabz
+theme: ../../packages/theme-nexuslabz
+title: Brand Guideline - Nexus Labz
 ---
 
-# NexusLabz
+# Nexus Labz
 
 ## Brand Guideline
 

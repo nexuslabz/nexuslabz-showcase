@@ -1,8 +1,9 @@
 ---
-title: Results - NexusLabz
+theme: ../../packages/theme-nexuslabz
+title: Results - Nexus Labz
 ---
 
-# NexusLabz
+# Nexus Labz
 
 ## Results
 

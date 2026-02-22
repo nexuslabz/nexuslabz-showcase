@@ -2,7 +2,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="shared/assets/logos/logo-full-no-bg-white.png">
     <source media="(prefers-color-scheme: light)" srcset="shared/assets/logos/logo-full-no-bg-black.png">
-    <img alt="NexusLabz" src="shared/assets/logos/logo-full-no-bg-black.png" width="400">
+    <img alt="Nexus Labz" src="shared/assets/logos/logo-full-no-bg-black.png" width="400">
   </picture>
 </p>
 
@@ -82,7 +82,7 @@ nexuslabz-showcase/
 ├── scripts/                # Automation scripts (build-all)
 ├── shared/
 │   └── assets/             # Shared assets
-│       ├── logos/           # NexusLabz logos
+│       ├── logos/           # Nexus Labz logos
 │       └── images/         # Global images
 └── package.json            # Root (Yarn workspaces)
 ```
@@ -117,7 +117,7 @@ mkdir -p presentations/new-presentation/public
 
 ```markdown
 ---
-title: New Presentation - NexusLabz
+title: New Presentation - Nexus Labz
 ---
 
 # Presentation Title

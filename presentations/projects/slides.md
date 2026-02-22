@@ -1,8 +1,9 @@
 ---
-title: Projects - NexusLabz
+theme: ../../packages/theme-nexuslabz
+title: Projects - Nexus Labz
 ---
 
-# NexusLabz
+# Nexus Labz
 
 ## Projects
 

@@ -1,8 +1,9 @@
 ---
-title: Our Team - NexusLabz
+theme: ../../packages/theme-nexuslabz
+title: Our Team - Nexus Labz
 ---
 
-# NexusLabz
+# Nexus Labz
 
 ## Our Team
 
