@@ -53,6 +53,7 @@ jobs:
         run: |
           mkdir -p _site
           cp public/index.html _site/
+          cp public/CNAME _site/
           for dir in presentations/*/dist; do
             name=$(basename $(dirname "$dir"))
             cp -r "$dir" "_site/$name"

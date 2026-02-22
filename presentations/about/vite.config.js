@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/nexuslabz-showcase/about/',
+  base: '/about/',
   resolve: {
     alias: {
       '@theme': resolve(__dirname, '../../packages/theme-nexuslabz'),
