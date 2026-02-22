@@ -8,7 +8,7 @@ import NexusLogo from '@theme/components/NexusLogo.vue';
     <div class="placeholder__content">
       <NexusLogo width="160" />
       <div class="placeholder__divider" />
-      <h1>Our Team</h1>
+      <h1>Metrics</h1>
       <span class="tag">Coming Soon</span>
     </div>
   </div>

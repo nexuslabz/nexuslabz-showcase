@@ -158,9 +158,131 @@
         color: rgba(255, 255, 255, 0.25);
         text-align: center;
       }
+
+      /* Language Switcher */
+      .lang-switcher {
+        position: fixed;
+        top: 1rem;
+        right: 1.5rem;
+        z-index: 100;
+      }
+
+      .lang-trigger {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.7rem;
+        background: rgba(30, 31, 24, 0.9);
+        border: 1px solid var(--nexus-grey-lighter);
+        border-radius: 6px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.72rem;
+        font-family: inherit;
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+      }
+
+      .lang-trigger:hover {
+        border-color: var(--neon-gold-dim);
+        color: var(--pure-white);
+      }
+
+      .lang-trigger svg {
+        width: 16px;
+        height: 12px;
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+
+      .lang-chevron {
+        width: 10px !important;
+        height: 10px !important;
+        transition: transform 0.2s;
+      }
+
+      .lang-switcher.open .lang-chevron {
+        transform: rotate(180deg);
+      }
+
+      .lang-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        background: rgba(30, 31, 24, 0.95);
+        border: 1px solid var(--nexus-grey-lighter);
+        border-radius: 6px;
+        overflow: hidden;
+        backdrop-filter: blur(12px);
+        opacity: 0;
+        transform: translateY(-4px);
+        pointer-events: none;
+        transition:
+          opacity 0.15s,
+          transform 0.15s;
+      }
+
+      .lang-switcher.open .lang-menu {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .lang-option {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.8rem;
+        width: 100%;
+        border: none;
+        background: none;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.72rem;
+        font-family: inherit;
+        cursor: pointer;
+        transition: background 0.15s;
+        white-space: nowrap;
+      }
+
+      .lang-option:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .lang-option.active {
+        color: var(--neon-gold);
+      }
+
+      .lang-option svg {
+        width: 16px;
+        height: 12px;
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
     </style>
   </head>
   <body>
+    <div class="lang-switcher" id="langSwitcher">
+      <button class="lang-trigger" id="langTrigger">
+        <svg id="flagCurrent" viewBox="0 0 640 480"></svg>
+        <span id="langLabel">EN</span>
+        <svg class="lang-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-option active" data-lang="en">
+          <svg viewBox="0 0 640 480"></svg>
+          English
+        </button>
+        <button class="lang-option" data-lang="pt">
+          <svg viewBox="0 0 640 480"></svg>
+          Português
+        </button>
+      </div>
+    </div>
+
     <div class="accent-bar"></div>
     <div class="container">
       <img
@@ -168,57 +290,113 @@
         alt="Nexus Labz"
         class="logo"
       />
-      <h1 class="title">Showcase</h1>
-      <p class="subtitle">Presentations &amp; Slide Decks</p>
+      <h1 class="title" data-en="Showcase" data-pt="Showcase">Showcase</h1>
+      <p class="subtitle" data-en="Presentations &amp; Slide Decks" data-pt="Apresentações &amp; Slides">Presentations &amp; Slide Decks</p>
 
       <div class="grid">
         <a href="./about/" class="card">
-          <div class="card-icon">&#9672;</div>
+          <div class="card-icon">🏢</div>
           <div class="card-info">
-            <span class="card-title">About Nexus Labz</span>
-            <span class="card-desc">Mission, vision, values &amp; services</span>
+            <span class="card-title" data-en="About Nexus Labz" data-pt="Sobre a Nexus Labz">About Nexus Labz</span>
+            <span class="card-desc" data-en="Mission, vision, values &amp; services" data-pt="Missão, visão, valores &amp; serviços">Mission, vision, values &amp; services</span>
           </div>
           <span class="card-arrow">&#8594;</span>
         </a>
 
         <a href="./visual-identity/" class="card">
-          <div class="card-icon">&#9670;</div>
+          <div class="card-icon">🎨</div>
           <div class="card-info">
-            <span class="card-title">Visual Identity</span>
-            <span class="card-desc">Logo, colors, typography &amp; usage guidelines</span>
+            <span class="card-title" data-en="Visual Identity" data-pt="Identidade Visual">Visual Identity</span>
+            <span class="card-desc" data-en="Logo, colors, typography &amp; usage guidelines" data-pt="Logo, cores, tipografia &amp; diretrizes de uso">Logo, colors, typography &amp; usage guidelines</span>
           </div>
           <span class="card-arrow">&#8594;</span>
         </a>
 
-        <a href="./team/" class="card">
-          <div class="card-icon">&#9733;</div>
+        <a href="./metrics/" class="card">
+          <div class="card-icon">📊</div>
           <div class="card-info">
-            <span class="card-title">Our Team</span>
-            <span class="card-desc">Meet the people behind Nexus Labz</span>
+            <span class="card-title" data-en="Metrics" data-pt="Métricas">Metrics</span>
+            <span class="card-desc" data-en="KPIs, outcomes &amp; impact" data-pt="KPIs, resultados &amp; impacto">KPIs, outcomes &amp; impact</span>
           </div>
           <span class="card-arrow">&#8594;</span>
         </a>
 
         <a href="./projects/" class="card">
-          <div class="card-icon">&#9881;</div>
+          <div class="card-icon">🚀</div>
           <div class="card-info">
-            <span class="card-title">Projects</span>
-            <span class="card-desc">What we are building</span>
+            <span class="card-title" data-en="Projects" data-pt="Projetos">Projects</span>
+            <span class="card-desc" data-en="What we are building" data-pt="O que estamos construindo">What we are building</span>
           </div>
           <span class="card-arrow">&#8594;</span>
         </a>
 
         <a href="./results/" class="card">
-          <div class="card-icon">&#9650;</div>
+          <div class="card-icon">🏆</div>
           <div class="card-info">
-            <span class="card-title">Results</span>
-            <span class="card-desc">Metrics, outcomes &amp; impact</span>
+            <span class="card-title" data-en="Results" data-pt="Resultados">Results</span>
+            <span class="card-desc" data-en="Case studies &amp; deliveries" data-pt="Estudos de caso &amp; entregas">Case studies &amp; deliveries</span>
           </div>
           <span class="card-arrow">&#8594;</span>
         </a>
       </div>
 
-      <footer>&copy; Nexus Labz. All rights reserved.</footer>
+      <footer data-en="&copy; Nexus Labz. All rights reserved." data-pt="&copy; Nexus Labz. Todos os direitos reservados.">&copy; Nexus Labz. All rights reserved.</footer>
     </div>
+
+    <script>
+      (function () {
+        const US_FLAG =
+          '<rect width="640" height="480" fill="#bd3d44"/><path d="M0 55.3h640M0 129h640M0 203h640M0 277h640M0 351h640M0 424h640" stroke="#fff" stroke-width="37"/><rect width="364" height="258" fill="#192f5d"/>';
+        const BR_FLAG =
+          '<rect width="640" height="480" fill="#009b3a"/><polygon points="320,40 600,240 320,440 40,240" fill="#fedf00"/><circle cx="320" cy="240" r="90" fill="#002776"/>';
+
+        const switcher = document.getElementById('langSwitcher');
+        const trigger = document.getElementById('langTrigger');
+        const flagCurrent = document.getElementById('flagCurrent');
+        const label = document.getElementById('langLabel');
+        const options = document.querySelectorAll('.lang-option');
+
+        const optionFlags = document.querySelectorAll('.lang-option svg');
+        optionFlags[0].innerHTML = US_FLAG;
+        optionFlags[1].innerHTML = BR_FLAG;
+
+        let locale = localStorage.getItem('nexus-locale') || 'en';
+
+        function setLocale(lang) {
+          locale = lang;
+          localStorage.setItem('nexus-locale', lang);
+
+          flagCurrent.innerHTML = lang === 'en' ? US_FLAG : BR_FLAG;
+          label.textContent = lang === 'en' ? 'EN' : 'PT';
+
+          options.forEach(function (o) {
+            o.classList.toggle('active', o.dataset.lang === lang);
+          });
+
+          document.querySelectorAll('[data-en]').forEach(function (el) {
+            el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.pt;
+          });
+
+          document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+          switcher.classList.remove('open');
+        }
+
+        trigger.addEventListener('click', function () {
+          switcher.classList.toggle('open');
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!switcher.contains(e.target)) switcher.classList.remove('open');
+        });
+
+        options.forEach(function (o) {
+          o.addEventListener('click', function () {
+            setLocale(o.dataset.lang);
+          });
+        });
+
+        setLocale(locale);
+      })();
+    </script>
   </body>
 </html>

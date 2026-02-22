@@ -1,8 +1,8 @@
 {
-  "name": "@nexuslabz/team",
+  "name": "@nexuslabz/metrics",
   "version": "1.0.0",
   "private": true,
-  "description": "Presentation: Our Team",
+  "description": "Presentation: Metrics & KPIs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
