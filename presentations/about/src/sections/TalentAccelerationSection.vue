@@ -28,14 +28,14 @@ const { t } = inject('i18n');
           <p class="accel__highlight">{{ t('acceleration.highlight') }}</p>
         </div>
 
-        <div class="accel__program glass">
+        <a href="https://qawithoutborders.com.br" target="_blank" class="accel__program glass">
           <img :src="qawbLogo" alt="QA Without Borders Mentory" class="accel__program-logo" />
           <div class="accel__program-info">
             <span class="accel__program-label">{{ t('acceleration.programLabel') }}</span>
             <span class="accel__program-name">QA Without Borders</span>
             <span class="accel__program-sub">— Mentory —</span>
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="accel__features">
@@ -127,6 +127,7 @@ const { t } = inject('i18n');
 }
 
 .accel__program {
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;

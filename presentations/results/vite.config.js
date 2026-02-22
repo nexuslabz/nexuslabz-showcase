@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@theme': resolve(__dirname, '../../packages/theme-nexuslabz'),
+      '@assets': resolve(__dirname, '../../shared/assets'),
     },
   },
 });
