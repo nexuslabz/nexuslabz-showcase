@@ -1,11 +1,11 @@
 {
-  "name": "@nexuslabz/time",
+  "name": "@nexuslabz/results",
   "version": "1.0.0",
   "private": true,
-  "description": "Apresentação: Time",
+  "description": "Presentation: Results",
   "scripts": {
     "dev": "slidev slides.md --open",
-    "build": "slidev build slides.md --base /nexuslabz-showcase/time/"
+    "build": "slidev build slides.md --base /nexuslabz-showcase/results/"
   },
   "dependencies": {
     "@slidev/cli": "latest",

@@ -1,11 +1,11 @@
 {
-  "name": "@nexuslabz/resultados",
+  "name": "@nexuslabz/brand-guideline",
   "version": "1.0.0",
   "private": true,
-  "description": "Apresentação: Resultados",
+  "description": "Presentation: Brand Guideline",
   "scripts": {
     "dev": "slidev slides.md --open",
-    "build": "slidev build slides.md --base /nexuslabz-showcase/resultados/"
+    "build": "slidev build slides.md --base /nexuslabz-showcase/brand-guideline/"
   },
   "dependencies": {
     "@slidev/cli": "latest",

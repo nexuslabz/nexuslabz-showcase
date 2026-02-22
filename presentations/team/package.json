@@ -1,11 +1,11 @@
 {
-  "name": "@nexuslabz/projetos",
+  "name": "@nexuslabz/team",
   "version": "1.0.0",
   "private": true,
-  "description": "Apresentação: Projetos",
+  "description": "Presentation: Our Team",
   "scripts": {
     "dev": "slidev slides.md --open",
-    "build": "slidev build slides.md --base /nexuslabz-showcase/projetos/"
+    "build": "slidev build slides.md --base /nexuslabz-showcase/team/"
   },
   "dependencies": {
     "@slidev/cli": "latest",
