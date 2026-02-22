@@ -281,11 +281,11 @@
       <div class="lang-menu" id="langMenu">
         <button class="lang-option active" data-lang="en">
           <svg viewBox="0 0 640 480"></svg>
-          English
+          EN
         </button>
         <button class="lang-option" data-lang="pt">
           <svg viewBox="0 0 640 480"></svg>
-          Português
+          BR
         </button>
       </div>
     </div>
@@ -414,7 +414,7 @@
           localStorage.setItem('nexus-locale', lang);
 
           flagCurrent.innerHTML = lang === 'en' ? US_FLAG : BR_FLAG;
-          label.textContent = lang === 'en' ? 'EN' : 'PT';
+          label.textContent = lang === 'en' ? 'EN' : 'BR';
 
           options.forEach(function (o) {
             o.classList.toggle('active', o.dataset.lang === lang);
