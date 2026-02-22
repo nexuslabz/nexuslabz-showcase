@@ -1,8 +1,8 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="shared/assets/logos/logo-full-no-bg-white.png">
-    <source media="(prefers-color-scheme: light)" srcset="shared/assets/logos/logo-full-no-bg-black.png">
-    <img alt="Nexus Labz" src="shared/assets/logos/logo-full-no-bg-black.png" width="400">
+    <source media="(prefers-color-scheme: light)" srcset="shared/assets/logos/logo-full-no-bg-grey.png">
+    <img alt="Nexus Labz" src="shared/assets/logos/logo-full-no-bg-grey.png" width="400">
   </picture>
 </p>
 
@@ -10,17 +10,18 @@
 
 <p align="center">
   Centralized repository for all Nexus Labz presentations.<br/>
-  Each presentation is an independent project within a monorepo, built with <a href="https://sli.dev/">Slidev</a> (Vue 3 + Vite) and published as static HTML via GitHub Pages.
+  Each presentation is an independent Vue 3 + Vite SPA within a monorepo, featuring horizontal-scroll navigation and published as static HTML via GitHub Pages.
 </p>
 
 ## Presentations
 
-| Presentation      | Description     | Dev                        | Build                        |
-| ----------------- | --------------- | -------------------------- | ---------------------------- |
-| `brand-guideline` | Brand Guideline | `yarn dev:brand-guideline` | `yarn build:brand-guideline` |
-| `team`            | Our Team        | `yarn dev:team`            | `yarn build:team`            |
-| `projects`        | Projects        | `yarn dev:projects`        | `yarn build:projects`        |
-| `results`         | Results         | `yarn dev:results`         | `yarn build:results`         |
+| Presentation      | Description                          | Dev                        | Build                        |
+| ----------------- | ------------------------------------ | -------------------------- | ---------------------------- |
+| `about`           | About Nexus Labz (mission, services) | `yarn dev:about`           | `yarn build:about`           |
+| `visual-identity` | Visual Identity Manual               | `yarn dev:visual-identity` | `yarn build:visual-identity` |
+| `team`            | Our Team                             | `yarn dev:team`            | `yarn build:team`            |
+| `projects`        | Projects                             | `yarn dev:projects`        | `yarn build:projects`        |
+| `results`         | Results                              | `yarn dev:results`         | `yarn build:results`         |
 
 ## Prerequisites
 
@@ -40,17 +41,17 @@ yarn install
 Open a presentation in the browser with hot-reload:
 
 ```bash
-yarn dev:brand-guideline
+yarn dev:visual-identity
 ```
 
-Edit the `presentations/brand-guideline/slides.md` file and see changes in real time.
+Each presentation lives in `presentations/<name>/src/` as a standard Vue 3 app with horizontal-scroll sections acting as slides.
 
 ## Build
 
 Generate the static HTML for a single presentation:
 
 ```bash
-yarn build:brand-guideline
+yarn build:visual-identity
 ```
 
 Generate all presentations at once:
@@ -66,16 +67,23 @@ Output files are located at `presentations/<name>/dist/`.
 ```
 nexuslabz-showcase/
 ├── .github/
-│   ├── workflows/          # GitHub Actions (deploy)
+│   ├── workflows/          # GitHub Actions (CI + deploy)
 │   └── dependabot.yml      # Automated dependency updates
 ├── .husky/                 # Git hooks (pre-commit with lint-staged)
 ├── config/
 │   ├── eslint.config.mjs   # ESLint (flat config)
 │   └── prettier.config.mjs # Prettier
 ├── packages/
-│   └── theme-nexuslabz/    # Shared theme (layouts, components, styles)
+│   └── theme-nexuslabz/    # Shared theme (components, styles, utilities)
+│       ├── components/     # Reusable Vue components (NexusLogo, TeamCard)
+│       └── styles/         # CSS: base, utilities, animations
 ├── presentations/
-│   ├── brand-guideline/    # Presentation: Brand Guideline
+│   ├── visual-identity/    # Presentation: Visual Identity Manual
+│   │   ├── index.html      # Vite entry point
+│   │   ├── vite.config.js  # Vite config with @theme alias
+│   │   └── src/
+│   │       ├── App.vue     # Shell with horizontal scroll-snap navigation
+│   │       └── sections/   # Each "slide" is a Vue section component
 │   ├── team/               # Presentation: Our Team
 │   ├── projects/           # Presentation: Projects
 │   └── results/            # Presentation: Results
@@ -84,15 +92,18 @@ nexuslabz-showcase/
 │   └── assets/             # Shared assets
 │       ├── logos/           # Nexus Labz logos
 │       └── images/         # Global images
+├── public/
+│   └── index.html          # Landing page (links to all presentations)
 └── package.json            # Root (Yarn workspaces)
 ```
 
 ## Creating a New Presentation
 
-1. Create a folder under `presentations/`:
+1. Create the presentation folder:
 
 ```bash
-mkdir -p presentations/new-presentation/public
+mkdir -p presentations/new-presentation/src/sections
+mkdir -p presentations/new-presentation/src/styles
 ```
 
 2. Create the workspace `package.json`:
@@ -103,35 +114,41 @@ mkdir -p presentations/new-presentation/public
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "slidev slides.md --open",
-    "build": "slidev build slides.md --base /nexuslabz-showcase/new-presentation/"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@slidev/cli": "latest",
-    "@slidev/theme-default": "latest"
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.0",
+    "vite": "^6.3.0"
   }
 }
 ```
 
-3. Create the `slides.md`:
+3. Create `vite.config.js` with the `@theme` alias:
 
-```markdown
----
-title: New Presentation - Nexus Labz
----
+```js
+import { resolve } from 'node:path';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
-# Presentation Title
-
-First slide content.
-
----
-
-# Second Slide
-
-Second slide content.
+export default defineConfig({
+  plugins: [vue()],
+  base: '/nexuslabz-showcase/new-presentation/',
+  resolve: {
+    alias: {
+      '@theme': resolve(__dirname, '../../packages/theme-nexuslabz'),
+    },
+  },
+});
 ```
 
-4. Add the scripts to the root `package.json` and run `yarn install`.
+4. Create `index.html`, `src/main.js`, `src/App.vue`, and section components following the existing presentations as reference.
+
+5. Add scripts to the root `package.json` and run `yarn install`.
 
 ## Available Scripts
 
@@ -154,10 +171,10 @@ Second slide content.
 
 ## Tech Stack
 
-- [Slidev](https://sli.dev/) — Presentation framework for developers
-- [Vue 3](https://vuejs.org/) — UI framework
-- [Vite](https://vite.dev/) — Build tool
-- [UnoCSS](https://unocss.dev/) — CSS engine (built into Slidev)
+- [Vue 3](https://vuejs.org/) — UI framework (Composition API + `<script setup>`)
+- [Vite 6](https://vite.dev/) — Build tool & dev server
+- CSS Custom Properties — Full control, no CSS framework dependency
+- CSS Scroll Snap — Native horizontal navigation
 - [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) — Monorepo
 
 ## License

@@ -1,77 +1,74 @@
 :root {
   --nexus-grey: #13140f;
-  --neon-gold: #d4af37;
-  --pure-white: #ffffff;
   --nexus-grey-light: #1e1f18;
   --nexus-grey-lighter: #2a2b22;
+  --nexus-grey-border: #333427;
+  --neon-gold: #d4af37;
   --neon-gold-dim: #b8962e;
   --neon-gold-glow: #e8c64a;
+  --neon-gold-15: rgba(212, 175, 55, 0.15);
+  --neon-gold-08: rgba(212, 175, 55, 0.08);
+  --pure-white: #ffffff;
+  --white-90: rgba(255, 255, 255, 0.9);
+  --white-70: rgba(255, 255, 255, 0.7);
+  --white-50: rgba(255, 255, 255, 0.5);
+  --white-30: rgba(255, 255, 255, 0.3);
+  --white-15: rgba(255, 255, 255, 0.15);
+  --white-08: rgba(255, 255, 255, 0.08);
+  --white-05: rgba(255, 255, 255, 0.05);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html.dark {
-  --slidev-theme-primary: var(--neon-gold);
-  --slidev-theme-bg: var(--nexus-grey);
-  --slidev-theme-text: var(--pure-white);
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.slidev-layout {
-  color: var(--pure-white);
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
   background-color: var(--nexus-grey);
+  color: var(--pure-white);
+  line-height: 1.6;
+  overflow: hidden;
 }
 
-.slidev-layout h1 {
-  color: var(--neon-gold);
-  font-weight: 700;
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
-.slidev-layout h2 {
-  color: var(--neon-gold-glow);
-  font-weight: 600;
-}
-
-.slidev-layout h3 {
-  color: var(--pure-white);
-  font-weight: 600;
-}
-
-.slidev-layout a {
+a {
   color: var(--neon-gold);
   text-decoration: none;
-  border-bottom: 1px solid var(--neon-gold-dim);
-  transition: border-color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
-.slidev-layout a:hover {
-  border-bottom-color: var(--neon-gold-glow);
-}
-
-.slidev-layout code {
-  background-color: var(--nexus-grey-lighter);
+a:hover {
   color: var(--neon-gold-glow);
-  padding: 0.15em 0.4em;
-  border-radius: 4px;
-  font-size: 0.9em;
 }
 
-.slidev-layout blockquote {
-  border-left: 4px solid var(--neon-gold);
-  padding-left: 1em;
-  color: rgba(255, 255, 255, 0.8);
-  font-style: italic;
-}
-
-.slidev-layout ul > li::marker,
-.slidev-layout ol > li::marker {
-  color: var(--neon-gold);
-}
-
-.slidev-layout hr {
-  border: none;
-  border-top: 1px solid var(--nexus-grey-lighter);
-  margin: 1.5em 0;
-}
-
-.slidev-page-number {
-  color: var(--neon-gold-dim);
+::selection {
+  background: var(--neon-gold-15);
+  color: var(--pure-white);
 }

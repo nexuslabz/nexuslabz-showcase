@@ -8,11 +8,13 @@
     "presentations/*"
   ],
   "scripts": {
-    "dev:brand-guideline": "yarn workspace @nexuslabz/brand-guideline dev",
+    "dev:about": "yarn workspace @nexuslabz/about dev",
+    "dev:visual-identity": "yarn workspace @nexuslabz/visual-identity dev",
     "dev:team": "yarn workspace @nexuslabz/team dev",
     "dev:projects": "yarn workspace @nexuslabz/projects dev",
     "dev:results": "yarn workspace @nexuslabz/results dev",
-    "build:brand-guideline": "yarn workspace @nexuslabz/brand-guideline build",
+    "build:about": "yarn workspace @nexuslabz/about build",
+    "build:visual-identity": "yarn workspace @nexuslabz/visual-identity build",
     "build:team": "yarn workspace @nexuslabz/team build",
     "build:projects": "yarn workspace @nexuslabz/projects build",
     "build:results": "yarn workspace @nexuslabz/results build",

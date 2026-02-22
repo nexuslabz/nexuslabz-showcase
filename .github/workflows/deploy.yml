@@ -46,9 +46,6 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - name: Install Playwright (Slidev dependency)
-        run: npx playwright install chromium
-
       - name: Build all presentations
         run: yarn build:all
 

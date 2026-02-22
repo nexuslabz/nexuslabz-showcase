@@ -2,20 +2,5 @@
   "name": "@nexuslabz/theme",
   "version": "1.0.0",
   "private": true,
-  "description": "Slidev theme for Nexus Labz presentations",
-  "keywords": [
-    "slidev-theme",
-    "slidev"
-  ],
-  "slidev": {
-    "colorSchema": "dark",
-    "defaults": {
-      "aspectRatio": "16/9",
-      "canvasWidth": 980,
-      "fonts": {
-        "sans": "Inter",
-        "mono": "Fira Code"
-      }
-    }
-  }
+  "description": "Shared theme for Nexus Labz presentations"
 }

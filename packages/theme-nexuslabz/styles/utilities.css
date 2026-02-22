@@ -1,0 +1,146 @@
+/* --- Glass morphism --- */
+.glass {
+  background: rgba(30, 31, 24, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--white-08);
+}
+
+.glass-subtle {
+  background: rgba(30, 31, 24, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--white-05);
+}
+
+/* --- Glow effects --- */
+.glow-gold {
+  box-shadow:
+    0 0 20px rgba(212, 175, 55, 0.15),
+    0 0 60px rgba(212, 175, 55, 0.05);
+}
+
+.glow-gold-strong {
+  box-shadow:
+    0 0 30px rgba(212, 175, 55, 0.25),
+    0 0 80px rgba(212, 175, 55, 0.1);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+}
+
+/* --- Gradient backgrounds --- */
+.bg-gradient-radial {
+  background: radial-gradient(ellipse at 50% 0%, var(--neon-gold-08) 0%, transparent 60%);
+}
+
+.bg-gradient-radial-bottom {
+  background: radial-gradient(ellipse at 50% 100%, var(--neon-gold-08) 0%, transparent 60%);
+}
+
+.bg-gradient-diagonal {
+  background: linear-gradient(135deg, var(--nexus-grey) 0%, var(--nexus-grey-light) 100%);
+}
+
+/* --- Accent lines --- */
+.accent-bar-top {
+  position: relative;
+}
+
+.accent-bar-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-gold), transparent);
+}
+
+.accent-bar-left {
+  position: relative;
+}
+
+.accent-bar-left::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 40%;
+  background: var(--neon-gold);
+  border-radius: 0 2px 2px 0;
+}
+
+/* --- Cards --- */
+.card {
+  padding: 1.5rem;
+  background: var(--white-05);
+  border: 1px solid var(--white-08);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--neon-gold-dim);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(212, 175, 55, 0.08);
+}
+
+/* --- Tags/Badges --- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--neon-gold);
+  background: var(--neon-gold-08);
+  border: 1px solid var(--neon-gold-15);
+  border-radius: 100px;
+}
+
+/* --- Text utilities --- */
+.text-gold {
+  color: var(--neon-gold);
+}
+
+.text-dim {
+  color: var(--white-50);
+}
+
+.text-muted {
+  color: var(--white-30);
+}
+
+.text-large {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+}
+
+.text-display {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.text-body-lg {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--white-70);
+}
+
+/* --- Grid dot pattern background --- */
+.bg-dots {
+  background-image: radial-gradient(circle, var(--white-08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}

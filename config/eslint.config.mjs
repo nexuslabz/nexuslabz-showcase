@@ -6,7 +6,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
   {
-    ignores: ['node_modules/**', 'dist/**', '.slidev/**', '**/*.md', 'yarn.lock'],
+    ignores: ['**/node_modules/**', '**/dist/**', '**/*.md', 'yarn.lock'],
   },
 
   js.configs.recommended,
@@ -19,6 +19,9 @@ export default [
       parser: vueParser,
       parserOptions: {
         sourceType: 'module',
+      },
+      globals: {
+        ...globals.browser,
       },
     },
   },
