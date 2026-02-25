@@ -1,0 +1,340 @@
+---
+description: How to create and adjust the language switcher (i18n) across all pages in this project
+globs: "**/*.{vue,html,js}"
+alwaysApply: false
+---
+
+# Language Switcher — Implementation Guide
+
+This project supports two locales: **EN** (English) and **BR** (Portuguese-Brazil). The language switcher must be visually and functionally identical everywhere it appears.
+
+## Architecture Overview
+
+There are two implementation contexts:
+
+| Context | Tech | Files |
+|---------|------|-------|
+| Vue 3 presentations | Vue component + composable | `LanguageSwitcher.vue`, `useI18n.js` |
+| Static HTML pages | Vanilla JS + `data-en`/`data-pt` attributes | `public/index.html`, `index.html` |
+
+Locale is persisted in `localStorage` under the key `nexus-locale`.
+
+---
+
+## 1. Vue Presentations (Source of Truth)
+
+### i18n Composable
+
+File: `packages/theme-nexuslabz/composables/useI18n.js`
+
+```javascript
+import { ref } from 'vue';
+
+export function createI18n(translations) {
+  const locale = ref('en');
+
+  function t(key) {
+    const keys = key.split('.');
+    let value = translations[locale.value];
+    for (const k of keys) value = value?.[k];
+    return value ?? key;
+  }
+
+  function setLocale(lang) {
+    locale.value = lang;
+  }
+
+  return { locale, t, setLocale };
+}
+```
+
+### Setup in App.vue
+
+```javascript
+import { createI18n } from '@theme/composables/useI18n';
+import LanguageSwitcher from '@theme/components/LanguageSwitcher.vue';
+import en from './i18n/en';
+import ptBR from './i18n/pt-BR';
+
+const i18n = createI18n({ en, 'pt-BR': ptBR });
+provide('i18n', i18n);
+```
+
+### Translation Files Structure
+
+Each presentation has `src/i18n/en.js` and `src/i18n/pt-BR.js` exporting a flat/nested object:
+
+```javascript
+export default {
+  cover: {
+    title: 'About Us',
+    subtitle: 'Connecting Talent, Technology & Business',
+  },
+  purpose: {
+    tag: 'Our Purpose',
+    missionTitle: 'Mission',
+    missionDesc: '...',
+  },
+  // ...
+};
+```
+
+Access in components via `inject`:
+
+```javascript
+const { t } = inject('i18n');
+// Template: {{ t('purpose.missionTitle') }}
+```
+
+### LanguageSwitcher.vue Component
+
+File: `packages/theme-nexuslabz/components/LanguageSwitcher.vue`
+
+Key behavior:
+- Injects `i18n` context (`locale`, `setLocale`)
+- Dropdown opens on trigger click, closes on outside `pointerdown`
+- Shows flag SVG + label ("EN" or "BR") + chevron in trigger
+- Each option shows: flag + label + checkmark SVG (only on active)
+- Active option has gold color (`#d4af37`)
+- Chevron rotates 180deg when open
+
+### Required CSS Classes (BEM)
+
+```
+.lang-dd                     — wrapper (fixed top-right in presentations, relative in navbars)
+.lang-dd--open               — modifier when dropdown is open
+.lang-dd__trigger            — the button that toggles the dropdown
+.lang-dd__flag               — inline SVG flag (20×14px, border-radius 2px)
+.lang-dd__label              — text label ("EN" or "BR"), 0.68rem, weight 700, uppercase
+.lang-dd__chevron            — down arrow, rotates on open
+.lang-dd__menu               — dropdown panel (absolute, right-aligned)
+.lang-dd__option             — each language row in dropdown
+.lang-dd__option--active     — active language (color: #d4af37)
+.lang-dd__option-label       — text inside option, flex: 1
+.lang-dd__check              — checkmark SVG, only rendered for active locale
+```
+
+### Flag SVGs
+
+**US Flag** (simplified with stars):
+```html
+<svg class="lang-dd__flag" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="480" fill="#bd3d44" />
+  <rect y="37" width="640" height="37" fill="#fff" />
+  <rect y="111" width="640" height="37" fill="#fff" />
+  <rect y="185" width="640" height="37" fill="#fff" />
+  <rect y="259" width="640" height="37" fill="#fff" />
+  <rect y="333" width="640" height="37" fill="#fff" />
+  <rect y="407" width="640" height="37" fill="#fff" />
+  <rect width="260" height="260" fill="#192f5d" />
+  <g fill="#fff">
+    <circle cx="26" cy="20" r="6" /><circle cx="78" cy="20" r="6" />
+    <circle cx="130" cy="20" r="6" /><circle cx="182" cy="20" r="6" />
+    <circle cx="234" cy="20" r="6" /><circle cx="52" cy="46" r="6" />
+    <circle cx="104" cy="46" r="6" /><circle cx="156" cy="46" r="6" />
+    <circle cx="208" cy="46" r="6" /><circle cx="26" cy="72" r="6" />
+    <circle cx="78" cy="72" r="6" /><circle cx="130" cy="72" r="6" />
+    <circle cx="182" cy="72" r="6" /><circle cx="234" cy="72" r="6" />
+    <circle cx="52" cy="98" r="6" /><circle cx="104" cy="98" r="6" />
+    <circle cx="156" cy="98" r="6" /><circle cx="208" cy="98" r="6" />
+  </g>
+</svg>
+```
+
+**BR Flag** (simplified):
+```html
+<svg class="lang-dd__flag" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="480" fill="#009b3a" />
+  <polygon points="320,40 600,240 320,440 40,240" fill="#fedf00" />
+  <circle cx="320" cy="240" r="95" fill="#002776" />
+  <path d="M200 260 Q320 200 440 260" fill="none" stroke="#fff" stroke-width="14" />
+</svg>
+```
+
+**Checkmark SVG** (shown on active option):
+```html
+<svg class="lang-dd__check" width="14" height="14" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="3">
+  <path d="M5 12l5 5L20 7" />
+</svg>
+```
+
+**Chevron SVG** (in trigger):
+```html
+<svg class="lang-dd__chevron" width="12" height="12" viewBox="0 0 24 24"
+     fill="none" stroke="currentColor" stroke-width="2.5">
+  <path d="M6 9l6 6 6-6" />
+</svg>
+```
+
+---
+
+## 2. Static HTML Pages (Vanilla JS)
+
+For pages that are NOT Vue apps (e.g. `public/index.html`, root `index.html`).
+
+### HTML Structure
+
+```html
+<div class="lang-dd" id="langDD">
+  <button class="lang-dd__trigger" id="langTrigger">
+    <svg class="lang-dd__flag" id="flagCurrent" viewBox="0 0 640 480"></svg>
+    <span class="lang-dd__label" id="langLabel">EN</span>
+    <svg class="lang-dd__chevron" width="12" height="12" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M6 9l6 6 6-6" />
+    </svg>
+  </button>
+  <div class="lang-dd__menu" id="langMenu">
+    <button class="lang-dd__option lang-dd__option--active" data-lang="en">
+      <svg class="lang-dd__flag" id="flagEN" viewBox="0 0 640 480"></svg>
+      <span class="lang-dd__option-label">EN</span>
+      <svg class="lang-dd__check" width="14" height="14" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="3">
+        <path d="M5 12l5 5L20 7" />
+      </svg>
+    </button>
+    <button class="lang-dd__option" data-lang="pt">
+      <svg class="lang-dd__flag" id="flagBR" viewBox="0 0 640 480"></svg>
+      <span class="lang-dd__option-label">BR</span>
+    </button>
+  </div>
+</div>
+```
+
+### Translatable Content
+
+Use `data-en` and `data-pt` attributes on any element that needs translation:
+
+```html
+<h2 data-en="Our Values" data-pt="Nossos Valores">Our Values</h2>
+<p data-en="We build products." data-pt="Construímos produtos.">We build products.</p>
+```
+
+The JS swaps `innerHTML` based on selected locale.
+
+### JavaScript Pattern
+
+```javascript
+(function () {
+  var US_FLAG = '...'; // Full US SVG innerHTML
+  var BR_FLAG = '...'; // Full BR SVG innerHTML
+  var CHECK_SVG = '<svg class="lang-dd__check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>';
+
+  var dd = document.getElementById('langDD');
+  var trigger = document.getElementById('langTrigger');
+  var flagCurrent = document.getElementById('flagCurrent');
+  var langLabel = document.getElementById('langLabel');
+  var options = document.querySelectorAll('.lang-dd__option');
+
+  document.getElementById('flagEN').innerHTML = US_FLAG;
+  document.getElementById('flagBR').innerHTML = BR_FLAG;
+
+  var locale = localStorage.getItem('nexus-locale') || 'en';
+
+  function setLocale(lang) {
+    locale = lang;
+    localStorage.setItem('nexus-locale', lang);
+    flagCurrent.innerHTML = lang === 'en' ? US_FLAG : BR_FLAG;
+    langLabel.textContent = lang === 'en' ? 'EN' : 'BR';
+
+    // Toggle active state and checkmark
+    options.forEach(function (o) {
+      var isActive = o.dataset.lang === lang;
+      o.classList.toggle('lang-dd__option--active', isActive);
+      var existing = o.querySelector('.lang-dd__check');
+      if (isActive && !existing) o.insertAdjacentHTML('beforeend', CHECK_SVG);
+      else if (!isActive && existing) existing.remove();
+    });
+
+    // Swap all translatable content
+    document.querySelectorAll('[data-en]').forEach(function (el) {
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.pt;
+    });
+
+    document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+    dd.classList.remove('lang-dd--open');
+  }
+
+  trigger.addEventListener('click', function () {
+    dd.classList.toggle('lang-dd--open');
+  });
+
+  document.addEventListener('pointerdown', function (e) {
+    if (!dd.contains(e.target)) dd.classList.remove('lang-dd--open');
+  });
+
+  options.forEach(function (o) {
+    o.addEventListener('click', function () { setLocale(o.dataset.lang); });
+  });
+
+  setLocale(locale);
+})();
+```
+
+### Required CSS for Static Pages
+
+Copy the exact same CSS classes from the Vue component. Key differences:
+- In Vue presentations: `.lang-dd` uses `position: fixed; top: 1rem; right: 1rem;`
+- In static pages embedded in navbars: `.lang-dd` uses `position: relative;`
+- The dropdown menu in static pages needs explicit opacity/transform transition since there is no Vue `<Transition>`:
+
+```css
+.lang-dd__menu {
+  opacity: 0;
+  transform: translateY(-4px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+}
+.lang-dd--open .lang-dd__menu {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+```
+
+---
+
+## 3. Design Tokens
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| Gold (active text, checkmark) | `#d4af37` | Active option, check icon |
+| Trigger background | `rgba(19, 20, 15, 0.7)` | Glassmorphic dark |
+| Trigger border | `rgba(255, 255, 255, 0.08)` | Subtle border |
+| Trigger border hover | `rgba(212, 175, 55, 0.3)` | Gold hint on hover |
+| Trigger border open | `rgba(212, 175, 55, 0.4)` | Gold when open |
+| Menu background | `rgba(19, 20, 15, 0.92)` | Darker glass |
+| Menu border | `rgba(255, 255, 255, 0.1)` | Subtle border |
+| Option hover bg | `rgba(255, 255, 255, 0.06)` | Very subtle highlight |
+| Flag size | `20×14px` | Standard across all |
+| Label font | `0.68rem / 700 / uppercase / 0.06em` | Consistent typography |
+| Border radius trigger | `8px` | Rounded corners |
+| Border radius options | `6px` | Slightly smaller |
+| Backdrop blur trigger | `12px` | Glass effect |
+| Backdrop blur menu | `16px` | Stronger glass |
+
+---
+
+## 4. Adding a New Language
+
+1. **Vue presentations**: Add entry to `languages` array in `LanguageSwitcher.vue`, create `src/i18n/{locale}.js` file, import in `App.vue` and pass to `createI18n`.
+2. **Static pages**: Add a new `<button class="lang-dd__option">` in HTML, add a new flag SVG, extend the `setLocale()` function, and add `data-{locale}` attributes to all translatable elements.
+3. **Flag**: Create a simplified inline SVG (same viewBox `0 0 640 480`).
+4. **localStorage key**: Remains `nexus-locale`, value is the locale code (e.g. `'es'`).
+
+---
+
+## 5. Checklist for Consistency
+
+When creating or modifying the language switcher on any page:
+
+- [ ] Uses `lang-dd` BEM class naming (NOT `lang-switcher`, `lang-trigger`, etc.)
+- [ ] Labels are **"EN"** and **"BR"** (NOT "English", "Português", "Inglês")
+- [ ] Active option shows gold checkmark SVG
+- [ ] Active option text is gold (`#d4af37`)
+- [ ] Chevron rotates 180deg when open
+- [ ] Dropdown closes on outside `pointerdown` (NOT `click`)
+- [ ] Locale persisted in `localStorage` key `nexus-locale`
+- [ ] Flag SVGs are identical across all pages
+- [ ] `document.documentElement.lang` is updated on locale change

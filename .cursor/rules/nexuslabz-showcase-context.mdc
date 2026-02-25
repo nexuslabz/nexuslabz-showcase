@@ -1,0 +1,298 @@
+---
+description: Full project context for the Nexus Labz Showcase monorepo — architecture, conventions, patterns, and guidelines
+alwaysApply: true
+---
+
+# Nexus Labz Showcase — Project Context
+
+## Company
+
+**Nexus Labz** (two separate words) is a tech company with 5 pillars:
+
+1. **Product Engineering** — E2E software development
+2. **Tech Consulting** — Talent allocation & recruiting
+3. **Talent Acceleration** — Career mentoring for QAs & Devs
+4. **Talent & Opportunity Hub** — Intelligent jobs/opportunity platform
+5. **Dedicated Product Squads** — On-demand squads for clients
+
+**Brand palette:** Nexus Grey `#13140f`, Neon Gold `#d4af37`, Pure White `#ffffff`
+**Domain:** `nexuslabz.co` — Showcase lives at `showcase.nexuslabz.co`
+**Founder:** Rennan Gimenez (CEO)
+
+---
+
+## What This Repo Is
+
+A **Yarn monorepo** hosting interactive, horizontal-scrolling Vue 3 + Vite presentations deployed to GitHub Pages at `showcase.nexuslabz.co`. Each presentation is a standalone SPA that builds to static HTML.
+
+There is also a root `index.html` (landing page mockup for `nexuslabz.co`) — this is NOT deployed to GitHub Pages, it's a local mockup only.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Package manager | **Yarn** (classic, with workspaces) — NOT npm, NOT pnpm |
+| Framework | **Vue 3** (Composition API, `<script setup>`) |
+| Build tool | **Vite** with `@vitejs/plugin-vue` |
+| Linting | **ESLint 10** (flat config) + `eslint-plugin-vue` |
+| Formatting | **Prettier 3** |
+| Git hooks | **Husky** + **lint-staged** (pre-commit) |
+| CI/CD | **GitHub Actions** (lint → build → deploy to Pages) |
+| Dependency updates | **Dependabot** (weekly, Monday, São Paulo timezone) |
+| Hosting | **GitHub Pages** with custom domain `showcase.nexuslabz.co` |
+| Node version | **>= 20** |
+
+---
+
+## Repository Structure
+
+```
+nexuslabz-showcase/
+├── .cursor/rules/              # Cursor AI rules
+├── .github/
+│   ├── workflows/
+│   │   ├── ci.yml              # PR lint check
+│   │   └── deploy.yml          # Main branch → build → deploy to Pages
+│   └── dependabot.yml
+├── .husky/pre-commit           # Runs lint-staged
+├── config/
+│   ├── eslint.config.mjs       # ESLint flat config (shared)
+│   └── prettier.config.mjs     # Prettier config (shared)
+├── packages/
+│   └── theme-nexuslabz/        # Shared theme package (@nexuslabz/theme)
+│       ├── components/         # LanguageSwitcher.vue, NexusLogo.vue, TeamCard.vue
+│       ├── composables/        # useI18n.js
+│       └── styles/             # index.css, animations.css, utilities.css
+├── presentations/
+│   ├── about/                  # "About Nexus Labz" — 11 slides
+│   ├── visual-identity/        # "Visual Identity Manual" — 10 slides
+│   ├── metrics/                # Placeholder (Metrics & KPIs)
+│   ├── projects/               # Placeholder (Projects)
+│   └── results/                # Placeholder (Results)
+├── public/
+│   ├── index.html              # Showcase homepage (deployed to root)
+│   ├── CNAME                   # showcase.nexuslabz.co
+│   └── favicon.png
+├── shared/
+│   └── assets/
+│       ├── logos/               # All logo variants (.png)
+│       └── images/              # Team member photos
+├── scripts/
+│   └── build-all.mjs           # Builds every presentation sequentially
+├── index.html                  # Landing page mockup (NOT deployed)
+├── package.json                # Root workspace config
+└── yarn.lock
+```
+
+---
+
+## Workspace Architecture
+
+Root `package.json` defines workspaces:
+
+```json
+"workspaces": ["packages/*", "presentations/*"]
+```
+
+Each presentation is an independent Vue+Vite app with package name `@nexuslabz/{name}`.
+
+### Vite Aliases (every presentation must have)
+
+```javascript
+resolve: {
+  alias: {
+    '@theme': resolve(__dirname, '../../packages/theme-nexuslabz'),
+    '@assets': resolve(__dirname, '../../shared/assets'),
+  },
+}
+```
+
+### Vite Base Path
+
+Each presentation sets `base: '/{name}/'` in `vite.config.js` for correct GitHub Pages routing.
+
+---
+
+## Presentation Architecture (Vue SPAs)
+
+Presentations are **horizontal-scrolling slide decks**. Each slide is a Vue section component rendered in a scroll-snapped container.
+
+### App.vue Pattern
+
+```javascript
+// 1. Import i18n, translations, LanguageSwitcher, and all sections
+const i18n = createI18n({ en, 'pt-BR': ptBR });
+provide('i18n', i18n);
+
+// 2. Define ordered sections array
+const sections = [CoverSection, PurposeSection, ...];
+
+// 3. Navigation: scroll-snap with wheel/keyboard events
+//    goTo(index), next(), prev()
+```
+
+### Template Structure
+
+```html
+<LanguageSwitcher />
+<div class="slides" ref="container" @wheel.passive="onWheel">
+  <div class="slide" v-for="(Section, i) in sections">
+    <component :is="Section" :active="currentSlide === i" />
+  </div>
+</div>
+<!-- Dot navigation + progress bar -->
+```
+
+### Key CSS
+
+```css
+.slides { display: flex; overflow-x: hidden; scroll-snap-type: x mandatory; }
+.slide  { min-width: 100vw; height: 100vh; scroll-snap-align: start; }
+```
+
+### Section Component Pattern
+
+```vue
+<script setup>
+import { inject } from 'vue';
+defineProps({ active: Boolean });
+const { t } = inject('i18n');
+</script>
+
+<template>
+  <section :class="{ active }">
+    <span class="tag animate-in" :class="{ visible: active }">{{ t('key.tag') }}</span>
+    <h2 class="animate-in delay-1" :class="{ visible: active }">{{ t('key.title') }}</h2>
+  </section>
+</template>
+```
+
+- Each section receives `active` prop (true when slide is visible)
+- Animations trigger via `.animate-in.visible` class combo
+- Stagger with `.delay-1` through `.delay-5`
+- All text comes from i18n `t()` function via `inject('i18n')`
+
+---
+
+## Internationalization (i18n)
+
+Two locales: **EN** (default) and **PT-BR**. See `language-switcher.mdc` for full implementation details.
+
+### Vue Context
+
+- Composable: `packages/theme-nexuslabz/composables/useI18n.js`
+- Translation files: `presentations/{name}/src/i18n/en.js` and `pt-BR.js`
+- Provided via `provide('i18n', ...)`, consumed via `inject('i18n')`
+- Component: `packages/theme-nexuslabz/components/LanguageSwitcher.vue`
+
+### Static HTML Context
+
+- Uses `data-en` and `data-pt` attributes on elements
+- Vanilla JS swaps `innerHTML` based on locale
+- Locale persisted in `localStorage` key `nexus-locale`
+- Language switcher uses identical BEM classes: `lang-dd`, `lang-dd__trigger`, etc.
+
+---
+
+## CSS Design System
+
+Defined in `packages/theme-nexuslabz/styles/index.css`:
+
+### Colors (CSS Custom Properties)
+
+```
+--nexus-grey: #13140f          --neon-gold: #d4af37
+--nexus-grey-light: #1e1f18    --neon-gold-dim: #b8962e
+--nexus-grey-lighter: #2a2b22  --neon-gold-glow: #e8c64a
+--pure-white: #ffffff           --white-90 through --white-05
+```
+
+### Typography
+
+Font: `'Inter', system-ui, -apple-system, sans-serif`
+
+### Animation Classes (animations.css)
+
+| Class | Effect | Activation |
+|-------|--------|-----------|
+| `.animate-in` | Fade up 30px | Add `.visible` |
+| `.animate-in-left` | Fade from left | Add `.visible` |
+| `.animate-in-right` | Fade from right | Add `.visible` |
+| `.animate-scale` | Scale from 0.92 | Add `.visible` |
+| `.delay-1` to `.delay-5` | 0.1s to 0.5s delay | Combine with above |
+
+### Common UI Elements
+
+- `.tag` — uppercase gold label pill (section identifier like "Pillar 01")
+- `.glass-card` — glassmorphism card with blur + subtle border
+- Glow effects via `box-shadow` with gold rgba values
+
+---
+
+## GitHub Actions Pipeline
+
+### `ci.yml` — Pull Request Checks
+
+Runs on PR to `main`: `yarn lint` + `yarn format:check`
+
+### `deploy.yml` — Production Deploy
+
+Runs on push to `main`:
+1. **Lint** — same as CI
+2. **Build** — `yarn build:all` (builds every presentation)
+3. **Prepare** — copies `public/index.html`, `CNAME`, `favicon.png` to `_site/`, then copies each `presentations/*/dist/` into `_site/{name}/`
+4. **Deploy** — `actions/deploy-pages@v4`
+
+Final URL structure:
+- `showcase.nexuslabz.co/` → `public/index.html`
+- `showcase.nexuslabz.co/about/` → `presentations/about/dist/`
+- `showcase.nexuslabz.co/visual-identity/` → `presentations/visual-identity/dist/`
+- etc.
+
+---
+
+## Code Quality
+
+### ESLint (flat config at `config/eslint.config.mjs`)
+
+- Base: `@eslint/js` recommended + `eslint-plugin-vue` flat/recommended
+- Vue files get `globals.browser`, JS files get `globals.node`
+- `no-console: warn`, `vue/multi-word-component-names: off`
+- Prettier integration via `eslint-config-prettier`
+- Ignores: `node_modules/`, `dist/`, `*.md`, `yarn.lock`
+
+### Prettier (`config/prettier.config.mjs`)
+
+```
+semi: true | singleQuote: true | trailingComma: 'all'
+printWidth: 100 | tabWidth: 2 | endOfLine: 'lf'
+```
+
+### Pre-commit (Husky + lint-staged)
+
+Runs ESLint `--fix` on `*.{js,mjs,cjs,vue}` and Prettier on `*.{js,mjs,cjs,vue,json,yaml,yml,css}`.
+
+---
+
+## Conventions
+
+- **Language**: All code, comments, and git commits in **English**. Presentations have bilingual content via i18n.
+- **Component naming**: PascalCase Vue SFC files, BEM-style CSS classes
+- **Imports**: Use `@theme/` alias for shared package, `@assets/` for shared assets
+- **No hardcoded text**: All user-facing text goes through i18n translation files
+- **Images**: Stored in `shared/assets/` (logos in `/logos`, photos in `/images`), imported via `@assets/` alias
+- **Favicon**: `shared/assets/logos/icon-no-bg-white.png` copied to `public/favicon.png` and each presentation's `public/favicon.png`
+
+## Adding a New Presentation
+
+1. Create `presentations/{name}/` with: `package.json`, `vite.config.js`, `index.html`, `src/App.vue`, `src/main.js`, `src/styles/global.css`
+2. `package.json` name must be `@nexuslabz/{name}`
+3. `vite.config.js` must have `base: '/{name}/'` and both `@theme`/`@assets` aliases
+4. Add `dev:{name}` and `build:{name}` scripts to root `package.json`
+5. Add i18n files if needed (`src/i18n/en.js`, `src/i18n/pt-BR.js`)
+6. Add favicon to `presentations/{name}/public/favicon.png`
+7. Add link tag in `index.html`: `<link rel="icon" href="/{name}/favicon.png">`
+8. Add card entry to `public/index.html` (showcase homepage)
+9. `build-all.mjs` auto-discovers it; `deploy.yml` auto-copies its dist
