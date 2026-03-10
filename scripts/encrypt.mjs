@@ -17,7 +17,7 @@ if (existsSync(envPath)) {
 }
 
 if (!process.env.STATICRYPT_PASSWORD) {
-  console.error('STATICRYPT_PASSWORD not set. Create a .env file or export the variable.');
+  process.stderr.write('STATICRYPT_PASSWORD not set. Create a .env file or export the variable.\n');
   process.exit(1);
 }
 
@@ -47,13 +47,13 @@ const targets = [
 
 for (const t of targets) {
   if (!existsSync(t.input)) {
-    console.log(`Skipping ${t.input} (not found)`);
+    process.stdout.write(`Skipping ${t.input} (not found)\n`);
     continue;
   }
 
   const cmd = `npx staticrypt ${t.input} -d ${t.dir} ${TEMPLATE_ARGS} --template-instructions "${t.instructions}"`;
-  console.log(`\nEncrypting: ${t.input}`);
+  process.stdout.write(`\nEncrypting: ${t.input}\n`);
   execSync(cmd, { stdio: 'inherit', env: process.env });
 }
 
-console.log('\nAll protected pages encrypted successfully.');
+process.stdout.write('\nAll protected pages encrypted successfully.\n');
