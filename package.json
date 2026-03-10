@@ -13,12 +13,15 @@
     "dev:metrics": "yarn workspace @nexuslabz/metrics dev",
     "dev:projects": "yarn workspace @nexuslabz/projects dev",
     "dev:results": "yarn workspace @nexuslabz/results dev",
+    "dev:nutrigen": "yarn workspace @nexuslabz/nutrigen dev",
     "build:about": "yarn workspace @nexuslabz/about build",
     "build:visual-identity": "yarn workspace @nexuslabz/visual-identity build",
     "build:metrics": "yarn workspace @nexuslabz/metrics build",
     "build:projects": "yarn workspace @nexuslabz/projects build",
     "build:results": "yarn workspace @nexuslabz/results build",
+    "build:nutrigen": "yarn workspace @nexuslabz/nutrigen build",
     "build:all": "node scripts/build-all.mjs",
+    "encrypt": "node scripts/encrypt.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -46,6 +49,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^16.3.1",
     "prettier": "^3.8.1",
+    "staticrypt": "^3.5.4",
     "vue-eslint-parser": "^10.4.0"
   }
 }

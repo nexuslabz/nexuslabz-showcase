@@ -55,10 +55,40 @@ jobs:
           cp public/index.html _site/
           cp public/CNAME _site/
           cp public/favicon.png _site/
+          mkdir -p _site/proposals
+          cp public/proposals/index.html _site/proposals/
           for dir in presentations/*/dist; do
             name=$(basename $(dirname "$dir"))
             cp -r "$dir" "_site/$name"
           done
+
+      - name: Encrypt protected pages
+        env:
+          STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
+        run: |
+          npx staticrypt _site/proposals/index.html \
+            -d _site/proposals \
+            --short \
+            -t shared/staticrypt-template.html \
+            --template-title "Acesso Restrito" \
+            --template-instructions "Digite a senha para acessar esta área." \
+            --template-button "DESBLOQUEAR" \
+            --template-placeholder "Senha" \
+            --template-remember "Lembrar de mim" \
+            --template-error "Senha incorreta!" \
+            --remember 7
+
+          npx staticrypt _site/nutrigen/index.html \
+            -d _site/nutrigen \
+            --short \
+            -t shared/staticrypt-template.html \
+            --template-title "Acesso Restrito" \
+            --template-instructions "Digite a senha para acessar esta apresentação." \
+            --template-button "DESBLOQUEAR" \
+            --template-placeholder "Senha" \
+            --template-remember "Lembrar de mim" \
+            --template-error "Senha incorreta!" \
+            --remember 7
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
