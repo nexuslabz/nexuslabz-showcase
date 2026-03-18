@@ -38,7 +38,7 @@ const phases = [
     items: [
       'Testes de performance e compatibilidade',
       'Revisões finais com a cliente',
-      'Otimização de SEO on-page',
+      'Otimização de SEO & GEO on-page',
       'Configuração de domínio e SSL',
       'Go-live e monitoramento ativo',
       'Início dos 6 meses de suporte incluso',

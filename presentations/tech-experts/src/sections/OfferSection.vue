@@ -56,7 +56,7 @@ defineProps({ active: Boolean });
 
       <p class="offer__note">
         As duas condições incluem tudo o que está no pacote completo: Hub + 5 landing pages,
-        infraestrutura, SEO e 6 meses de suporte profissional.
+        infraestrutura, SEO & GEO e 6 meses de suporte profissional.
       </p>
     </div>
   </section>

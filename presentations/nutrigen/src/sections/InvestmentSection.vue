@@ -25,7 +25,7 @@ const categories = [
     title: 'Infraestrutura & Performance',
     items: [
       { name: 'Setup Infraestrutura Completa', value: 'R$ 1.800' },
-      { name: 'SEO + Analytics + Search Console', value: 'R$ 1.500' },
+      { name: 'SEO & GEO + Analytics + Search Console', value: 'R$ 1.500' },
     ],
     subtotal: 'R$ 3.300',
   },

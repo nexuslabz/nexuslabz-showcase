@@ -20,7 +20,7 @@ const features = [
   {
     icon: '📝',
     title: 'Blog / Conteúdo',
-    desc: 'Área para artigos, dicas e educação nutricional que funciona como motor de SEO contínuo',
+    desc: 'Área para artigos, dicas e educação nutricional que funciona como motor de SEO & GEO contínuo',
   },
   {
     icon: '📅',

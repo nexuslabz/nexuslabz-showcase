@@ -6,6 +6,7 @@ import ChallengeSection from './sections/ChallengeSection.vue';
 import SolutionSection from './sections/SolutionSection.vue';
 import EcosystemSection from './sections/EcosystemSection.vue';
 import FeaturesSection from './sections/FeaturesSection.vue';
+import SeoGeoSection from './sections/SeoGeoSection.vue';
 import JourneySection from './sections/JourneySection.vue';
 import RoadmapSection from './sections/RoadmapSection.vue';
 import FutureSection from './sections/FutureSection.vue';
@@ -22,6 +23,7 @@ const sections = [
   SolutionSection,
   EcosystemSection,
   FeaturesSection,
+  SeoGeoSection,
   JourneySection,
   RoadmapSection,
   FutureSection,

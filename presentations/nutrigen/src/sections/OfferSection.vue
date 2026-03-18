@@ -56,8 +56,8 @@ defineProps({ active: Boolean });
       </p>
 
       <p class="offer__note">
-        As duas condições incluem tudo o que está no pacote completo: infraestrutura, SEO, guia da
-        marca e 6 meses de suporte profissional.
+        As duas condições incluem tudo o que está no pacote completo: infraestrutura, SEO & GEO,
+        guia da marca e 6 meses de suporte profissional.
       </p>
     </div>
   </section>

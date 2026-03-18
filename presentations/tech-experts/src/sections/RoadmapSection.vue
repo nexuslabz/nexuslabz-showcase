@@ -26,7 +26,7 @@ const phases = [
       'Desenvolvimento frontend responsivo',
       'Integração com WhatsApp Business',
       'Formulários de captura e lista de espera',
-      'SEO on-page + Google Analytics',
+      'SEO & GEO on-page + Google Analytics',
       'Área de depoimentos e social proof',
     ],
     outcome: 'Hub + 5 LPs em homologação',

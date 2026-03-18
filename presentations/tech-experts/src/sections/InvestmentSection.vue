@@ -29,7 +29,7 @@ const categories = [
       { name: 'Hub Central', value: 'R$ 4.000' },
       { name: '5 Landing Pages', value: 'R$ 6.000' },
       { name: 'Integrações (WhatsApp, Analytics, Forms)', value: 'R$ 1.800' },
-      { name: 'SEO On-page & Indexação', value: 'R$ 1.200' },
+      { name: 'SEO & GEO On-page + Indexação', value: 'R$ 1.200' },
     ],
     subtotal: 'R$ 13.000',
   },

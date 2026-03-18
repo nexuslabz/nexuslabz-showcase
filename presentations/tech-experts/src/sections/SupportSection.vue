@@ -23,7 +23,7 @@ const plans = [
       'Tudo do White +',
       'Otimizações de performance e velocidade',
       'Relatórios mensais de desempenho e métricas',
-      'Otimização SEO contínua e indexação',
+      'Otimização SEO & GEO contínua e indexação',
       'Atualização de dependências e segurança',
     ],
   },

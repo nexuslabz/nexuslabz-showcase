@@ -9,8 +9,8 @@ const pillars = [
   },
   {
     icon: '⚡',
-    title: 'Performance & SEO',
-    desc: 'Site otimizado para Google, carregamento ultra-rápido e estrutura técnica para ranquear nas primeiras posições.',
+    title: 'Performance, SEO & GEO',
+    desc: 'Site otimizado para Google e para inteligências artificiais, com carregamento ultra-rápido e estrutura técnica para aparecer nas primeiras posições.',
   },
   {
     icon: '🧲',
