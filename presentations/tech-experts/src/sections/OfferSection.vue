@@ -29,8 +29,8 @@ defineProps({ active: Boolean });
         <div class="offer__card offer__card--installment">
           <div class="offer__card-header">Parcelado</div>
           <div class="offer__card-price">R$ 25.500</div>
-          <div class="offer__card-detail">até 5x sem juros de R$ 5.100,00</div>
-          <div class="offer__card-method">via Link de Pagamento · Mercado Pago</div>
+          <div class="offer__card-detail">até 12x de R$ 2.550,01</div>
+          <div class="offer__card-method">via Link de Pagamento · Lucre+</div>
           <div class="offer__card-discount">
             <span class="offer__card-discount-value">- R$ 4.500</span>
             <span class="offer__card-discount-pct">15% OFF</span>
