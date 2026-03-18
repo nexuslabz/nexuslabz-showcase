@@ -8,6 +8,7 @@ import FeaturesSection from './sections/FeaturesSection.vue';
 import JourneySection from './sections/JourneySection.vue';
 import RoadmapSection from './sections/RoadmapSection.vue';
 import FutureSection from './sections/FutureSection.vue';
+import FormalizationSection from './sections/FormalizationSection.vue';
 import InvestmentSection from './sections/InvestmentSection.vue';
 import OfferSection from './sections/OfferSection.vue';
 import SupportSection from './sections/SupportSection.vue';
@@ -22,6 +23,7 @@ const sections = [
   JourneySection,
   RoadmapSection,
   FutureSection,
+  FormalizationSection,
   InvestmentSection,
   OfferSection,
   SupportSection,

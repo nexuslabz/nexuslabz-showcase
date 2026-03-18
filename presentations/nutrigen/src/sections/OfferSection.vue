@@ -28,11 +28,11 @@ defineProps({ active: Boolean });
       <div class="offer__cards">
         <div class="offer__card offer__card--installment">
           <div class="offer__card-header">Parcelado</div>
-          <div class="offer__card-price">R$ 18.730</div>
-          <div class="offer__card-detail">3x de R$ 6.243,00</div>
+          <div class="offer__card-price">R$ 18.700</div>
+          <div class="offer__card-detail">até 5x sem juros de R$ 3.740,00</div>
           <div class="offer__card-method">via Link de Pagamento · Mercado Pago</div>
           <div class="offer__card-discount">
-            <span class="offer__card-discount-value">- R$ 3.270</span>
+            <span class="offer__card-discount-value">- R$ 3.300</span>
             <span class="offer__card-discount-pct">15% OFF</span>
           </div>
         </div>
@@ -40,12 +40,12 @@ defineProps({ active: Boolean });
         <div class="offer__card offer__card--pix">
           <div class="offer__card-badge">Melhor Condição</div>
           <div class="offer__card-header">À Vista · PIX</div>
-          <div class="offer__card-price">R$ 16.000</div>
+          <div class="offer__card-price">R$ 15.400</div>
           <div class="offer__card-detail">Transferência única via PIX</div>
           <div class="offer__card-method">Pagamento imediato, sem parcelas</div>
           <div class="offer__card-discount">
-            <span class="offer__card-discount-value">- R$ 6.000</span>
-            <span class="offer__card-discount-pct">27% OFF</span>
+            <span class="offer__card-discount-value">- R$ 6.600</span>
+            <span class="offer__card-discount-pct">30% OFF</span>
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ defineProps({ active: Boolean });
       </p>
 
       <p class="offer__note">
-        Ambas as condições incluem tudo listado no pacote completo: infraestrutura, SEO, guia da
+        As duas condições incluem tudo o que está no pacote completo: infraestrutura, SEO, guia da
         marca e 6 meses de suporte profissional.
       </p>
     </div>
