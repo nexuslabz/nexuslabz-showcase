@@ -97,29 +97,33 @@
       .grid {
         margin-top: 2rem;
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
       }
 
       .card {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 1.25rem;
         padding: 1.25rem 1.5rem;
         background: var(--nexus-grey-light);
         border: 1px solid var(--nexus-grey-lighter);
-        border-radius: 10px;
+        border-radius: 12px;
         text-decoration: none;
         color: var(--pure-white);
         transition:
-          border-color 0.2s ease,
-          transform 0.15s ease;
+          border-color 0.25s ease,
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
       }
 
       .card:hover {
         border-color: var(--neon-gold-dim);
         transform: translateY(-2px);
+        box-shadow:
+          0 8px 30px rgba(0, 0, 0, 0.3),
+          0 0 20px rgba(212, 175, 55, 0.06);
       }
 
       .card-icon {
@@ -377,6 +381,20 @@
               data-en="Digital platform &amp; sales funnel"
               data-pt="Plataforma digital &amp; funil de vendas"
               >Digital platform &amp; sales funnel</span
+            >
+          </div>
+          <span class="card-arrow">&#8594;</span>
+        </a>
+
+        <a href="/tech-experts/" class="card">
+          <div class="card-icon">🧠</div>
+          <div class="card-info">
+            <span class="card-title">Tech Experts Mentory</span>
+            <span
+              class="card-desc"
+              data-en="Digital ecosystem &amp; product hub"
+              data-pt="Ecossistema digital &amp; hub de produtos"
+              >Digital ecosystem &amp; product hub</span
             >
           </div>
           <span class="card-arrow">&#8594;</span>

@@ -43,6 +43,11 @@ const targets = [
     dir: '_site/nutrigen',
     instructions: 'Digite a senha para acessar esta apresentação.',
   },
+  {
+    input: '_site/tech-experts/index.html',
+    dir: '_site/tech-experts',
+    instructions: 'Digite a senha para acessar esta apresentação.',
+  },
 ];
 
 for (const t of targets) {

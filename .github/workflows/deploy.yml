@@ -90,6 +90,18 @@ jobs:
             --template-error "Senha incorreta!" \
             --remember 7
 
+          npx staticrypt _site/tech-experts/index.html \
+            -d _site/tech-experts \
+            --short \
+            -t shared/staticrypt-template.html \
+            --template-title "Acesso Restrito" \
+            --template-instructions "Digite a senha para acessar esta apresentação." \
+            --template-button "DESBLOQUEAR" \
+            --template-placeholder "Senha" \
+            --template-remember "Lembrar de mim" \
+            --template-error "Senha incorreta!" \
+            --remember 7
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
