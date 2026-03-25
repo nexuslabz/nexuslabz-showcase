@@ -6,11 +6,11 @@ const options = [
     badge: 'Mais completo',
     icon: '🌐',
     title: 'Ecossistema Completo',
-    desc: 'Plataforma multi-páginas com blog, agendamento, funil de conversão e presença completa no Google e nas IAs.',
+    desc: 'Plataforma com o Protocolo de Modulação Metabólica no centro: site, blog, agendamento e presença no Google e IAs.',
     highlights: [
-      'Site com 6+ páginas dedicadas',
-      'Blog com SEO e GEO contínuo',
-      'Jornada completa do paciente',
+      'Página dedicada ao protocolo',
+      'Blog sobre hormônios e metabolismo',
+      'Jornada completa do visitante ao paciente',
       'Expansão futura sem refazer nada',
     ],
     timeline: '~16 semanas',
@@ -21,12 +21,12 @@ const options = [
     badge: 'Mais rápido',
     icon: '🚀',
     title: 'Landing Page de Conversão',
-    desc: 'Página única focada em vender o protocolo Nutrigen. Direto ao ponto, com prova social e CTA claro.',
+    desc: 'Página única focada no protocolo. Explica a abordagem de causa raiz, mostra resultados e leva direto ao agendamento.',
     highlights: [
-      'Página única de alta conversão',
-      'Copy estratégica e prova social',
-      'Entrega rápida e focada',
-      'Ideal para começar agora',
+      'Protocolo explicado de forma clara',
+      'Depoimentos e prova social',
+      'CTA direto para agendar',
+      'Ideal para começar a converter agora',
     ],
     timeline: '~8 semanas',
     support: '3 meses Nexus Gold',
@@ -48,7 +48,7 @@ const options = [
       <h2 class="comp__title">Duas formas de <span class="comp__hl">começar.</span></h2>
 
       <p class="comp__subtitle">
-        Preparamos dois caminhos para colocar o Nutrigen no digital.
+        Dois caminhos para colocar o Nutrigen no digital de forma profissional.
         <strong>Você escolhe o que faz mais sentido agora.</strong>
       </p>
 

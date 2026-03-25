@@ -17,9 +17,9 @@ defineProps({ active: Boolean });
       </h2>
 
       <p class="seogeo__subtitle">
-        Não basta um site bonito. Suas pacientes precisam achar você no Google, e as IAs precisam
-        conseguir recomendar você com segurança.
-        <strong>Cuidamos das duas frentes em tudo que entregamos.</strong>
+        Quando alguém pesquisa "nutricionista funcional", "modulação hormonal" ou "emagrecimento
+        saudável", você precisa aparecer. No Google e nas IAs.
+        <strong>Otimizamos o site inteiro para as duas frentes.</strong>
       </p>
 
       <div class="seogeo__grid">
@@ -28,7 +28,7 @@ defineProps({ active: Boolean });
             <span class="seogeo__badge seogeo__badge--seo">SEO</span>
             <h3 class="seogeo__card-title">Busca no Google</h3>
           </div>
-          <p class="seogeo__card-hook">Quando a paciente pesquisar, você aparece</p>
+          <p class="seogeo__card-hook">"nutricionista funcional perto de mim" e você aparece</p>
           <div class="seogeo__items">
             <div class="seogeo__item">
               <span class="seogeo__icon">🔍</span>
@@ -48,7 +48,10 @@ defineProps({ active: Boolean });
             </div>
             <div class="seogeo__item">
               <span class="seogeo__icon">📝</span>
-              <span>Blog com termos que pacientes realmente pesquisam</span>
+              <span
+                >Blog com termos reais: modulação hormonal, resistência insulínica,
+                metabolismo</span
+              >
             </div>
           </div>
         </div>
@@ -58,7 +61,9 @@ defineProps({ active: Boolean });
             <span class="seogeo__badge seogeo__badge--geo">GEO</span>
             <h3 class="seogeo__card-title">Recomendação em IAs</h3>
           </div>
-          <p class="seogeo__card-hook">A paciente pergunta à IA e a IA recomenda você</p>
+          <p class="seogeo__card-hook">
+            "qual o melhor protocolo para modulação hormonal?" e a IA cita você
+          </p>
           <div class="seogeo__items">
             <div class="seogeo__item">
               <span class="seogeo__icon">🧠</span>
@@ -66,7 +71,7 @@ defineProps({ active: Boolean });
             </div>
             <div class="seogeo__item">
               <span class="seogeo__icon">💬</span>
-              <span>Conteúdo que a IA consegue citar com confiança</span>
+              <span>Conteúdo sobre causa raiz e protocolo que a IA cita com segurança</span>
             </div>
             <div class="seogeo__item">
               <span class="seogeo__icon">🔗</span>
@@ -87,12 +92,16 @@ defineProps({ active: Boolean });
       <div class="seogeo__vs">
         <div class="seogeo__vs-item">
           <span class="seogeo__vs-label">SEO</span>
-          <span class="seogeo__vs-desc">A paciente pesquisa no Google e encontra você</span>
+          <span class="seogeo__vs-desc"
+            >"modulação metabólica nutricionista" no Google e você aparece</span
+          >
         </div>
         <span class="seogeo__vs-plus">+</span>
         <div class="seogeo__vs-item">
           <span class="seogeo__vs-label seogeo__vs-label--geo">GEO</span>
-          <span class="seogeo__vs-desc">A paciente pergunta à IA e a IA recomenda você</span>
+          <span class="seogeo__vs-desc"
+            >"como tratar resistência insulínica?" na IA e ela cita você</span
+          >
         </div>
       </div>
     </div>

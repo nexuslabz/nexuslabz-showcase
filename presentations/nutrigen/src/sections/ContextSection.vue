@@ -3,24 +3,24 @@ defineProps({ active: Boolean });
 
 const points = [
   {
-    icon: '🌱',
-    title: 'Fase de Reestruturação',
-    text: 'Angelica está se reestruturando para retomar os atendimentos. O Nutrigen está saindo do papel e precisa nascer com presença digital.',
+    icon: '🧬',
+    title: 'Protocolo de Modulação Metabólica',
+    text: 'O Nutrigen já tem posicionamento claro: tratar a causa raiz (hormônios, metabolismo, genética) e não o sintoma. Isso é um diferencial forte.',
   },
   {
     icon: '📱',
-    title: 'Hoje: Só Instagram e Indicação',
-    text: 'Sem site, sem funil, sem captura de leads. A única vitrine é o Instagram. E indicação, sozinha, não escala.',
+    title: 'Conteúdo forte, sem destino digital',
+    text: 'O Instagram já educa sobre metabolismo e hormônios. Mas quem se interessa não tem um site para conhecer mais, comparar e agendar.',
   },
   {
     icon: '🎯',
-    title: 'Objetivo Claro',
-    text: 'Vender protocolos e atrair leads qualificados para atendimentos individualizados. Autoridade + presença online.',
+    title: 'Público real, de várias origens',
+    text: 'Pacientes chegam por indicação, redes sociais e busca no Google. Falta a estrutura digital para receber, convencer e converter.',
   },
   {
     icon: '🏗️',
-    title: 'Tudo Por Construir',
-    text: 'Domínio, site, agendamento, blog, captura de leads. A identidade visual já existe. Falta a infraestrutura digital.',
+    title: 'Identidade pronta, infra por construir',
+    text: 'Logo, paleta, tom de voz e conteúdo educativo já existem. Falta o domínio, o site, o agendamento online e o funil de conversão.',
   },
 ];
 </script>
@@ -35,14 +35,14 @@ const points = [
       <span class="tag tag--nexus">O Cenário Atual</span>
 
       <h2 class="context__title">
-        O Nutrigen está saindo do papel.
-        <span class="context__highlight">E precisa nascer digital.</span>
+        O conteúdo já convence.
+        <span class="context__highlight">Falta a estrutura digital.</span>
       </h2>
 
       <p class="context__subtitle">
-        Angelica está se reestruturando para voltar aos atendimentos e quer fazer diferente.
-        <strong>O momento ideal para construir tudo certo desde o início</strong>, com
-        posicionamento, presença e estrutura profissional.
+        O Nutrigen já tem posicionamento, conteúdo e público interessado.
+        <strong>Agora é hora de transformar visitantes em pacientes</strong>, com site, funil e
+        agendamento profissional.
       </p>
 
       <div class="context__grid">
@@ -58,8 +58,8 @@ const points = [
       <div class="context__note">
         <span class="context__note-tag">Realidade</span>
         <span class="context__note-text"
-          >Logo e paleta prontos, visão clara. Falta a infraestrutura digital para fazer
-          acontecer.</span
+          >Posicionamento e conteúdo prontos, mas sem site, sem funil e sem agendamento online. Quem
+          se interessa não tem um caminho claro para virar paciente.</span
         >
       </div>
     </div>

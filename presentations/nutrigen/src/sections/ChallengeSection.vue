@@ -4,27 +4,27 @@ defineProps({ active: Boolean });
 const challenges = [
   {
     icon: '🚫',
-    pain: 'Sem site, sem autoridade.',
+    pain: 'Sem site, sem autoridade digital.',
     detail:
-      'O paciente busca no Google, não encontra o Nutrigen e marca com outro profissional que já tem presença digital.',
+      'O conteúdo sobre modulação metabólica gera interesse, mas não existe um site profissional para receber quem quer saber mais.',
   },
   {
-    icon: '🔀',
-    pain: 'Instagram não é funil.',
+    icon: '🔍',
+    pain: 'Invisível no Google e nas IAs.',
     detail:
-      'Postar conteúdo sem um site de conversão por trás é como abrir a porta e não ter onde receber o paciente.',
+      'Quem pesquisa "nutricionista funcional" ou "modulação hormonal" não encontra o Nutrigen. Quem aparece, leva a paciente.',
   },
   {
     icon: '🕳️',
-    pain: 'Interesse que vira silêncio.',
+    pain: 'Interesse que esfria rápido.',
     detail:
-      'Sem funil e sem agendamento online, o potencial paciente perde o interesse antes de marcar a consulta.',
+      'A pessoa se interessa pelo protocolo, mas não tem onde agendar na hora. Sem um caminho claro, o interesse vira silêncio.',
   },
   {
     icon: '🧱',
-    pain: 'Crescimento depende só de você.',
+    pain: 'Crescimento que depende de esforço manual.',
     detail:
-      'Sem estrutura digital, você traz cada paciente na marra. Nada trabalha de forma automática por você.',
+      'Sem funil e sem agendamento online, cada paciente nova exige troca de mensagem e encaixe de horário na mão.',
   },
 ];
 </script>
@@ -39,13 +39,13 @@ const challenges = [
       <span class="tag tag--nexus">O Problema</span>
 
       <h2 class="challenge__title">
-        Sem digital, o Nutrigen<br />
-        <span class="challenge__highlight">já nasce limitado.</span>
+        Demanda real,<br />
+        <span class="challenge__highlight">estrutura zero.</span>
       </h2>
 
       <p class="challenge__subtitle">
-        Se você começa sem presença digital em 2026, já começa atrás. Essas falhas custam pacientes
-        desde o primeiro dia:
+        O protocolo é forte e o conteúdo já educa. Mas sem infraestrutura digital, o caminho entre o
+        interesse e a consulta é longo demais:
       </p>
 
       <div class="challenge__grid">
@@ -62,8 +62,8 @@ const challenges = [
         <div class="challenge__verdict">
           <span class="challenge__verdict-icon">🚨</span>
           <p>
-            Enquanto isso não mudar, você perde tempo, consultas e ritmo de crescimento. Cada dia
-            sem presença digital é uma <strong>oportunidade que não volta</strong>.
+            O diferencial do protocolo e a autoridade do conteúdo já existem. Falta a estrutura para
+            transformar interesse em <strong>agenda cheia de forma automática</strong>.
           </p>
         </div>
       </div>

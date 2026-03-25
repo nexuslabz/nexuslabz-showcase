@@ -3,28 +3,28 @@ defineProps({ active: Boolean });
 
 const pillars = [
   {
-    icon: '🎨',
-    title: 'Design Profissional',
-    impact: 'Autoridade imediata.',
-    desc: 'Identidade visual premium alinhada ao Nutrigen, com cores, tipografia e estética que transmitem confiança.',
+    icon: '🧬',
+    title: 'Protocolo como Diferencial',
+    impact: 'Causa raiz, não sintoma.',
+    desc: 'O site inteiro gira em torno do Protocolo de Modulação Metabólica. Quem chega, entende rápido por que sua abordagem é diferente.',
   },
   {
     icon: '⚡',
-    title: 'Velocidade, Google e IAs',
+    title: 'Google, IAs e Velocidade',
     impact: 'Encontrada por quem busca.',
-    desc: 'Site rápido, organizado para o Google entender e com dados que ajudam IAs como ChatGPT e Gemini a recomendar você.',
+    desc: 'Site rápido, indexado no Google e com dados estruturados para IAs como ChatGPT e Gemini recomendarem você.',
   },
   {
     icon: '🧲',
     title: 'Funil de Conversão',
-    impact: 'Fim do lead perdido.',
-    desc: 'Do primeiro clique ao agendamento, com botões claros em cada etapa para o visitante saber exatamente o que fazer.',
+    impact: 'Do clique ao agendamento.',
+    desc: 'Caminho claro do primeiro acesso à consulta marcada. Botões, provas sociais e CTAs em cada etapa.',
   },
   {
     icon: '📱',
     title: '100% Responsivo',
-    impact: 'Qualquer dispositivo.',
-    desc: 'Experiência impecável em celular, tablet ou desktop. Seus pacientes acessam de qualquer lugar.',
+    impact: 'Qualquer tela, qualquer origem.',
+    desc: 'Experiência impecável em celular, tablet ou desktop. Funciona igual vindo do Google, de uma rede social ou de uma indicação.',
   },
 ];
 </script>
@@ -45,8 +45,8 @@ const pillars = [
         </h2>
 
         <p class="solution__subtitle">
-          Não é só uma página bonita. Você ganha um lugar na web feito para atrair, convencer e
-          converter: <strong>mais pacientes, mais vendas e mais receita</strong>.
+          O Protocolo de Modulação Metabólica é o diferencial. A plataforma transforma esse
+          diferencial em <strong>consultas marcadas, pacientes novas e receita previsível</strong>.
         </p>
       </div>
 
@@ -66,8 +66,8 @@ const pillars = [
         <div class="solution__promise">
           <span class="solution__promise-icon">✅</span>
           <p>
-            Plataforma completa. Cliques rastreados.
-            <strong>Cada visitante vira uma oportunidade real de consulta.</strong>
+            Plataforma completa com o Protocolo de Modulação Metabólica no centro.
+            <strong>Cada visitante vira uma oportunidade real de agendamento.</strong>
           </p>
         </div>
       </div>

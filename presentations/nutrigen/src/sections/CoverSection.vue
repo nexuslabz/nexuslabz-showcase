@@ -33,9 +33,7 @@ defineProps({ active: Boolean });
         <span class="cover__highlight">do zero ao resultado.</span>
       </h1>
 
-      <p class="cover__subtitle">
-        Desenvolvimento de plataforma web estratégica para o protocolo Nutrigen
-      </p>
+      <p class="cover__subtitle">Plataforma digital para o Protocolo de Modulação Metabólica</p>
 
       <span class="tag">2026</span>
     </div>

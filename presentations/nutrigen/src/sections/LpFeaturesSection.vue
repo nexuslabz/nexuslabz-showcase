@@ -5,42 +5,42 @@ const features = [
   {
     icon: '🎯',
     title: 'Hero com CTA direto',
-    desc: 'Abertura forte com headline, vídeo opcional e botão de ação claro. A visitante entende a proposta em segundos.',
+    desc: 'Abertura sobre o Protocolo de Modulação Metabólica: o que é, para quem e botão de agendamento logo no topo.',
   },
   {
     icon: '👩‍⚕️',
     title: 'Sobre a Angelica',
-    desc: 'Seção de credibilidade com sua história, formação e diferenciais. A paciente confia antes de comprar.',
+    desc: 'Formação em nutrição funcional, abordagem de causa raiz e o diferencial de tratar hormônios e metabolismo.',
   },
   {
-    icon: '📋',
-    title: 'Protocolo Nutrigen',
-    desc: 'Explicação clara do que é o protocolo, como funciona e o que a paciente vai receber.',
+    icon: '🧬',
+    title: 'O Protocolo',
+    desc: 'Modulação Metabólica explicada de forma simples: genética, hormônios e metabolismo como base do tratamento.',
   },
   {
     icon: '✅',
     title: 'Benefícios e Resultados',
-    desc: 'Lista visual dos ganhos reais. A paciente vê o que muda na vida dela ao seguir o protocolo.',
+    desc: 'Lista visual dos ganhos reais. A paciente vê o que muda quando você trata a causa, não o sintoma.',
   },
   {
     icon: '⭐',
-    title: 'Depoimentos e Prova Social',
-    desc: 'Feedbacks reais que geram confiança. Quem está em dúvida se convence ao ver resultados de outras pessoas.',
+    title: 'Depoimentos Reais',
+    desc: 'Resultados de pacientes que fizeram o protocolo. Prova social que gera confiança em quem está conhecendo.',
   },
   {
     icon: '❓',
     title: 'FAQ',
-    desc: 'Perguntas frequentes que eliminam objeções. A paciente tira as dúvidas sem precisar perguntar.',
+    desc: 'Perguntas frequentes que eliminam objeções. A paciente tira as dúvidas e decide ali mesmo.',
   },
   {
     icon: '💬',
     title: 'WhatsApp Integrado',
-    desc: 'Botão flutuante para contato rápido. Quem preferir falar antes de comprar, consegue.',
+    desc: 'Botão flutuante para quem prefere conversar antes de agendar. Contato rápido em um clique.',
   },
   {
     icon: '📊',
     title: 'Analytics e Rastreamento',
-    desc: 'Você acompanha quantas pessoas visitaram, clicaram e converteram. Dados reais para tomar decisões.',
+    desc: 'Você vê quantas pessoas visitaram, de onde vieram e quantas agendaram. Dados reais para decidir.',
   },
 ];
 </script>
@@ -58,8 +58,8 @@ const features = [
       <h2 class="lpf__title">Uma página. <span class="lpf__hl">Um objetivo.</span></h2>
 
       <p class="lpf__subtitle">
-        Página única pensada para vender o protocolo Nutrigen. Cada seção existe para
-        <strong>levar a visitante até o botão de ação</strong>.
+        Página única com o Protocolo de Modulação Metabólica no centro. Cada seção existe para
+        <strong>levar a visitante do interesse ao agendamento</strong>.
       </p>
 
       <div class="lpf__grid">

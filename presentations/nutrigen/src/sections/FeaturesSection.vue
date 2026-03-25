@@ -3,58 +3,58 @@ defineProps({ active: Boolean });
 
 const features = [
   {
+    icon: '🧬',
+    title: 'Página do Protocolo',
+    desc: 'O Protocolo de Modulação Metabólica explicado de forma clara: o que é, como funciona e por que trata a causa, não o sintoma.',
+    tag: 'Diferencial',
+  },
+  {
     icon: '🏠',
     title: 'Página Inicial',
-    desc: 'Abertura forte com o protocolo Nutrigen, depoimentos e um botão claro para agendar.',
+    desc: 'Abertura forte com o protocolo, prova social e CTA direto para agendar. A paciente entende o valor em segundos.',
     tag: 'Principal',
   },
   {
     icon: '👩‍⚕️',
-    title: 'Página "Sobre Mim"',
-    desc: 'Sua história, formação e o que faz o Nutrigen ser único. A paciente conhece você antes de agendar.',
-    tag: null,
-  },
-  {
-    icon: '📋',
-    title: 'Página de Serviços',
-    desc: 'Consultas, protocolos e planos explicados de forma clara para a paciente escolher com confiança.',
+    title: 'Sobre a Angelica',
+    desc: 'Formação, abordagem funcional e o que faz o Nutrigen ser diferente. A paciente confia antes de agendar.',
     tag: null,
   },
   {
     icon: '📝',
     title: 'Blog e Conteúdo',
-    desc: 'Artigos e dicas que mantêm o site vivo no Google e dão matéria para as IAs citarem você.',
+    desc: 'Artigos sobre hormônios, metabolismo e genética que mantêm o site vivo no Google e alimentam as IAs.',
     tag: 'SEO e GEO',
   },
   {
     icon: '📅',
-    title: 'Sistema de Agendamento',
-    desc: 'A paciente escolhe o horário direto no site, sem precisar trocar mensagem.',
+    title: 'Agendamento Online',
+    desc: 'A paciente escolhe o horário direto no site. Sem troca de mensagem, sem espera.',
     tag: null,
   },
   {
     icon: '💬',
     title: 'WhatsApp Integrado',
-    desc: 'Botão flutuante para contato rápido. Quem preferir falar antes de agendar, consegue.',
+    desc: 'Botão flutuante para quem prefere falar antes de agendar. Contato rápido em um clique.',
     tag: null,
   },
   {
     icon: '⭐',
-    title: 'Depoimentos e Cases',
-    desc: 'Resultados reais e feedbacks de pacientes que geram confiança em quem está conhecendo.',
+    title: 'Depoimentos e Resultados',
+    desc: 'Resultados reais de pacientes que fizeram o protocolo. Prova social que convence quem está em dúvida.',
     tag: null,
   },
   {
     icon: '📊',
     title: 'Analytics e Search Console',
-    desc: 'Você acompanha tráfego, conversões e comportamento de quem visita o site.',
+    desc: 'Você acompanha tráfego, conversões e de onde vem cada paciente.',
     tag: 'Dados',
   },
   {
     icon: '🔍',
-    title: 'Presença no Google e nas IAs',
-    desc: 'Seu site aparece na busca e entra nas respostas de ferramentas como ChatGPT, Gemini e Perplexity.',
-    tag: 'Diferencial',
+    title: 'Google e IAs',
+    desc: 'Quem pesquisa "nutricionista funcional", "modulação hormonal" ou "emagrecimento saudável" encontra você.',
+    tag: 'Visibilidade',
   },
 ];
 </script>
@@ -73,8 +73,8 @@ const features = [
       </h2>
 
       <p class="features__subtitle">
-        Você recebe plataforma e infraestrutura prontas. Cada parte existe para
-        <strong>trazer retorno na prática</strong>.
+        Plataforma montada em torno do Protocolo de Modulação Metabólica. Cada página existe para
+        <strong>transformar visita em agendamento</strong>.
       </p>
 
       <div class="features__grid">

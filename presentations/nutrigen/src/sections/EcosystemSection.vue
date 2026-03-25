@@ -2,7 +2,7 @@
 defineProps({ active: Boolean });
 
 const routes = [
-  { path: '/servicos', label: 'Serviços e Protocolos', icon: '📋' },
+  { path: '/protocolo', label: 'Modulação Metabólica', icon: '🧬' },
   { path: '/sobre', label: 'Sobre a Angelica', icon: '👩‍⚕️' },
   { path: '/agendamento', label: 'Agendamento Online', icon: '📅' },
   { path: '/blog', label: 'Blog e Conteúdo', icon: '📝' },
@@ -21,7 +21,8 @@ const routes = [
       <span class="tag tag--nexus">Arquitetura</span>
 
       <h2 class="eco__title">
-        Uma <span class="eco__hl">plataforma completa</span> para transformar visita em agendamento.
+        Protocolo de Modulação Metabólica no centro de uma
+        <span class="eco__hl">plataforma que converte</span>.
       </h2>
 
       <div class="eco__diagram">

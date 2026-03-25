@@ -55,12 +55,13 @@ const plans = [
       <span class="tag tag--nexus">Pós-Lançamento</span>
 
       <h2 class="support__title">
-        <span class="support__highlight">6 meses de Nexus Gold</span> já inclusos.
+        <span class="support__highlight">Nexus Gold</span> já incluso no seu pacote.
       </h2>
 
       <p class="support__subtitle">
-        Seu site não fica sozinho depois do go-live. Você começa com o plano mais completo.
-        <strong>Depois, escolhe como quer continuar.</strong>
+        Seu site não fica sozinho depois do go-live. Você começa com o plano mais completo:
+        <strong>6 meses no Ecossistema</strong> ou <strong>3 meses na Landing Page</strong>. Depois,
+        escolhe como quer continuar.
       </p>
 
       <div class="support__grid">
@@ -85,7 +86,7 @@ const plans = [
       </div>
 
       <p class="support__note">
-        Após os 6 meses, você escolhe o plano que faz sentido para o momento do negócio.
+        Ao final do período incluso, você escolhe o plano que faz sentido para o momento do negócio.
       </p>
     </div>
   </section>
