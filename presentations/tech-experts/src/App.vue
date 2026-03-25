@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import CoverSection from './sections/CoverSection.vue';
+import AboutSection from './sections/AboutSection.vue';
 import ContextSection from './sections/ContextSection.vue';
 import ChallengeSection from './sections/ChallengeSection.vue';
 import SolutionSection from './sections/SolutionSection.vue';
@@ -18,6 +19,7 @@ import CtaSection from './sections/CtaSection.vue';
 
 const sections = [
   CoverSection,
+  AboutSection,
   ContextSection,
   ChallengeSection,
   SolutionSection,

@@ -16,7 +16,7 @@ defineProps({ active: Boolean });
 
       <div class="cover__logos">
         <img
-          src="@assets/logos/tech-experts/logo-main.png"
+          src="@assets/logos/tech-experts/logo-full-white-no-bg.png"
           alt="Tech Experts Mentory"
           class="cover__logo cover__logo--client"
         />
@@ -97,10 +97,9 @@ defineProps({ active: Boolean });
 }
 
 .cover__logo--client {
-  height: 110px;
+  height: 180px;
   width: auto;
   object-fit: contain;
-  border-radius: 12px;
 }
 
 .cover__logo--nexus {

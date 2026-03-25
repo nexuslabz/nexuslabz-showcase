@@ -4,16 +4,16 @@ defineProps({ active: Boolean });
 const categories = [
   {
     icon: '🧭',
-    title: 'Estratégia & Planejamento',
+    title: 'Estratégia e Planejamento',
     items: [
-      { name: 'Consultoria Estratégica & Discovery', value: 'R$ 2.800' },
+      { name: 'Consultoria e Discovery', value: 'R$ 2.800' },
       { name: 'Estratégia de Funil de Vendas', value: 'R$ 3.500' },
     ],
     subtotal: 'R$ 6.300',
   },
   {
     icon: '🎨',
-    title: 'Design & Desenvolvimento',
+    title: 'Design e Desenvolvimento',
     items: [
       { name: 'Design UI/UX Personalizado', value: 'R$ 4.800' },
       { name: 'Desenvolvimento Frontend Responsivo', value: 'R$ 5.200' },
@@ -22,19 +22,19 @@ const categories = [
   },
   {
     icon: '⚙️',
-    title: 'Infraestrutura & Performance',
+    title: 'Infraestrutura e Performance',
     items: [
       { name: 'Setup Infraestrutura Completa', value: 'R$ 1.800' },
-      { name: 'SEO & GEO + Analytics + Search Console', value: 'R$ 1.500' },
+      { name: 'SEO e GEO, Analytics e Search Console', value: 'R$ 1.500' },
     ],
     subtotal: 'R$ 3.300',
   },
   {
     icon: '🛡️',
-    title: 'Entregáveis & Suporte',
+    title: 'Entregáveis e Suporte',
     items: [
       { name: 'Guia de Uso da Marca Digital', value: 'R$ 900' },
-      { name: '6 Meses de Suporte Profissional', value: 'R$ 1.500' },
+      { name: '6 Meses de Suporte Nexus Gold', value: 'R$ 1.500' },
     ],
     subtotal: 'R$ 2.400',
   },
@@ -48,12 +48,14 @@ const categories = [
     </div>
 
     <div class="investment__content">
-      <span class="tag">Investimento</span>
+      <span class="tag tag--nexus">Investimento</span>
 
-      <h2 class="investment__title">Tudo que está <span class="text-gold">incluso</span></h2>
+      <h2 class="investment__title">
+        Cada centavo <span class="investment__highlight">justificado.</span>
+      </h2>
 
       <div class="investment__grid">
-        <div v-for="(cat, i) in categories" :key="i" class="card investment__card">
+        <div v-for="(cat, i) in categories" :key="i" class="investment__card">
           <div class="investment__card-header">
             <span class="investment__card-icon">{{ cat.icon }}</span>
             <span class="investment__card-title">{{ cat.title }}</span>
@@ -72,10 +74,11 @@ const categories = [
       </div>
 
       <div class="investment__total">
-        <div class="investment__total-label">Valor Total do Pacote</div>
+        <div class="investment__total-label">Valor total do pacote</div>
         <div class="investment__total-price">R$ 22.000</div>
         <div class="investment__total-desc">
-          8 entregáveis completos · projeto do zero ao resultado
+          Plataforma no ar, busca no Google e nas IAs, 6 meses de suporte. Do zero até a primeira
+          conversão.
         </div>
       </div>
     </div>
@@ -91,13 +94,13 @@ const categories = [
   justify-content: center;
   background: var(--nexus-grey);
   position: relative;
-  padding: 2rem 3rem;
+  padding: 1.5rem 2.5rem;
+  overflow: hidden;
 }
 
 .investment__bg {
   position: absolute;
   inset: 0;
-  overflow: hidden;
   pointer-events: none;
 }
 
@@ -119,43 +122,60 @@ const categories = [
   width: 100%;
 }
 
+.tag--nexus {
+  background: var(--neon-gold-08);
+  border-color: var(--neon-gold);
+  color: var(--neon-gold);
+  font-weight: 700;
+}
+
 .investment__title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   font-weight: 700;
   color: var(--pure-white);
-  margin: 1.25rem 0 1.5rem;
+  margin: 0.75rem 0 1rem;
   letter-spacing: -0.02em;
+}
+
+.investment__highlight {
+  background: linear-gradient(90deg, var(--neon-gold), #f0d060);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .investment__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .investment__card {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md, 8px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .investment__card-header {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--white-08);
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .investment__card-icon {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
 }
 
 .investment__card-title {
-  font-size: 0.82rem;
-  font-weight: 600;
+  font-size: 0.72rem;
+  font-weight: 700;
   color: var(--neon-gold);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -167,7 +187,7 @@ const categories = [
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.4rem;
   flex: 1;
 }
 
@@ -175,16 +195,16 @@ const categories = [
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .investment__item-name {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--white-50);
 }
 
 .investment__item-value {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--pure-white);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
@@ -195,10 +215,10 @@ const categories = [
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--white-08);
-  font-size: 0.72rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.68rem;
   font-weight: 600;
   color: var(--white-30);
 }
@@ -210,26 +230,26 @@ const categories = [
 
 .investment__total {
   text-align: center;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: var(--radius-lg);
-  background: var(--neon-gold-08);
-  border: 1px solid var(--neon-gold-15);
+  background: rgba(212, 175, 55, 0.05);
+  border: 2px solid var(--neon-gold);
   box-shadow:
-    0 0 30px rgba(212, 175, 55, 0.1),
-    0 0 80px rgba(212, 175, 55, 0.04);
+    0 0 30px rgba(212, 175, 55, 0.15),
+    0 0 80px rgba(212, 175, 55, 0.05);
 }
 
 .investment__total-label {
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.65rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--white-50);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .investment__total-price {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   color: var(--neon-gold);
   letter-spacing: -0.03em;
@@ -237,8 +257,8 @@ const categories = [
 }
 
 .investment__total-desc {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--white-30);
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
 }
 </style>

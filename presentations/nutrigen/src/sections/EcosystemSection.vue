@@ -2,12 +2,12 @@
 defineProps({ active: Boolean });
 
 const routes = [
-  { path: '/mentoria', label: 'Mentoria Executive', icon: '🧠' },
-  { path: '/leadership', label: 'Leadership Pro', icon: '🎖️' },
-  { path: '/eventos', label: 'Eventos & Workshops', icon: '🎤' },
-  { path: '/livro', label: 'Livro', icon: '📖' },
-  { path: '/comunidade', label: 'Comunidade', icon: '👥' },
-  { path: '/...', label: 'Novos Produtos', icon: '🚀', future: true },
+  { path: '/servicos', label: 'Serviços e Protocolos', icon: '📋' },
+  { path: '/sobre', label: 'Sobre a Angelica', icon: '👩‍⚕️' },
+  { path: '/agendamento', label: 'Agendamento Online', icon: '📅' },
+  { path: '/blog', label: 'Blog e Conteúdo', icon: '📝' },
+  { path: '/depoimentos', label: 'Depoimentos e Cases', icon: '⭐' },
+  { path: '/loja', label: 'Loja Online', icon: '🛒', future: true },
 ];
 </script>
 
@@ -21,14 +21,14 @@ const routes = [
       <span class="tag tag--nexus">Arquitetura</span>
 
       <h2 class="eco__title">
-        Um <span class="eco__hl">ecossistema completo</span> projetado para vender.
+        Uma <span class="eco__hl">plataforma completa</span> para transformar visita em agendamento.
       </h2>
 
       <div class="eco__diagram">
         <div class="eco__hub">
-          <span class="eco__hub-badge">HUB CENTRAL</span>
+          <span class="eco__hub-badge">SITE PRINCIPAL</span>
           <span class="eco__hub-icon">🌐</span>
-          <span class="eco__hub-domain">techexpertsmentory.com</span>
+          <span class="eco__hub-domain">nutrigen.com.br</span>
         </div>
 
         <div class="eco__trunk" />
@@ -45,7 +45,7 @@ const routes = [
               <span class="eco__node-icon">{{ r.icon }}</span>
               <span class="eco__node-name">{{ r.label }}</span>
               <span class="eco__node-path">{{ r.path }}</span>
-              <span class="eco__node-tag">{{ r.future ? 'Futuro' : 'LP' }}</span>
+              <span class="eco__node-tag">{{ r.future ? 'Futuro' : 'Página' }}</span>
             </div>
           </div>
         </div>

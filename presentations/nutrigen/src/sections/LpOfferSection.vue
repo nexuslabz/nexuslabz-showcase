@@ -10,6 +10,7 @@ defineProps({ active: Boolean });
     </div>
 
     <div class="offer__content">
+      <div class="offer__offer-tag"><span>Oferta 2</span></div>
       <span class="tag tag--nexus">Condição Especial</span>
 
       <h2 class="offer__title">Proposta de <span class="offer__highlight">1ª parceria.</span></h2>
@@ -21,29 +22,29 @@ defineProps({ active: Boolean });
 
       <div class="offer__anchor">
         <span class="offer__anchor-label">Valor original do pacote completo</span>
-        <span class="offer__anchor-price">R$ 30.000</span>
+        <span class="offer__anchor-price">R$ 10.000</span>
       </div>
 
       <div class="offer__cards">
         <div class="offer__card offer__card--installment">
           <div class="offer__card-header">Parcelado</div>
-          <div class="offer__card-price">R$ 25.500</div>
-          <div class="offer__card-detail">até 12x de R$ 2.550,01</div>
-          <div class="offer__card-method">via Link de Pagamento · Lucre+</div>
+          <div class="offer__card-price">R$ 8.500</div>
+          <div class="offer__card-detail">até 12x de R$ 850,01</div>
+          <div class="offer__card-method">Link de pagamento Lucre+</div>
           <div class="offer__card-discount">
-            <span class="offer__card-discount-value">- R$ 4.500</span>
+            <span class="offer__card-discount-value">- R$ 1.500</span>
             <span class="offer__card-discount-pct">15% OFF</span>
           </div>
         </div>
 
         <div class="offer__card offer__card--pix">
           <div class="offer__card-badge">Melhor Condição</div>
-          <div class="offer__card-header">À Vista · PIX</div>
-          <div class="offer__card-price">R$ 21.000</div>
+          <div class="offer__card-header">À Vista via PIX</div>
+          <div class="offer__card-price">R$ 7.000</div>
           <div class="offer__card-detail">Transferência única via PIX</div>
           <div class="offer__card-method">Pagamento imediato, sem parcelas</div>
           <div class="offer__card-discount">
-            <span class="offer__card-discount-value">- R$ 9.000</span>
+            <span class="offer__card-discount-value">- R$ 3.000</span>
             <span class="offer__card-discount-pct">30% OFF</span>
           </div>
         </div>
@@ -52,14 +53,14 @@ defineProps({ active: Boolean });
       <div class="offer__roi">
         <span class="offer__roi-icon">💰</span>
         <p>
-          Com apenas <strong>2 mentorados convertidos</strong> pelo funil digital, todo o
-          investimento já se paga. A partir do terceiro, é <strong>lucro líquido</strong>.
+          Uma landing page profissional trabalha por você <strong>24 horas por dia</strong>. O
+          retorno vem com os primeiros pacientes convertidos.
         </p>
       </div>
 
       <p class="offer__note">
-        As duas condições incluem o pacote completo: Hub + 5 LPs, infraestrutura, SEO & GEO e 6
-        meses de suporte Nexus Gold.
+        Nas duas opções você leva o pacote completo: landing page, infraestrutura, integrações e 3
+        meses de Nexus Gold.
       </p>
     </div>
   </section>
@@ -111,6 +112,24 @@ defineProps({ active: Boolean });
   max-width: 900px;
   width: 100%;
   text-align: center;
+}
+
+.offer__offer-tag {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.offer__offer-tag span {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--neon-gold);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.85rem;
+  border-radius: 100px;
 }
 
 .tag--nexus {

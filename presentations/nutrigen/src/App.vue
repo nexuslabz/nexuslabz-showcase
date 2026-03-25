@@ -1,33 +1,47 @@
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import CoverSection from './sections/CoverSection.vue';
+import AboutSection from './sections/AboutSection.vue';
 import ContextSection from './sections/ContextSection.vue';
 import ChallengeSection from './sections/ChallengeSection.vue';
 import SolutionSection from './sections/SolutionSection.vue';
+import ComparisonSection from './sections/ComparisonSection.vue';
+import EcosystemSection from './sections/EcosystemSection.vue';
 import FeaturesSection from './sections/FeaturesSection.vue';
 import SeoGeoSection from './sections/SeoGeoSection.vue';
 import JourneySection from './sections/JourneySection.vue';
 import RoadmapSection from './sections/RoadmapSection.vue';
 import FutureSection from './sections/FutureSection.vue';
-import FormalizationSection from './sections/FormalizationSection.vue';
 import InvestmentSection from './sections/InvestmentSection.vue';
 import OfferSection from './sections/OfferSection.vue';
 import SupportSection from './sections/SupportSection.vue';
+import LpFeaturesSection from './sections/LpFeaturesSection.vue';
+import LpRoadmapSection from './sections/LpRoadmapSection.vue';
+import LpInvestmentSection from './sections/LpInvestmentSection.vue';
+import LpOfferSection from './sections/LpOfferSection.vue';
+import FormalizationSection from './sections/FormalizationSection.vue';
 import CtaSection from './sections/CtaSection.vue';
 
 const sections = [
   CoverSection,
+  AboutSection,
   ContextSection,
   ChallengeSection,
   SolutionSection,
+  ComparisonSection,
+  EcosystemSection,
   FeaturesSection,
   SeoGeoSection,
   JourneySection,
   RoadmapSection,
   FutureSection,
-  FormalizationSection,
   InvestmentSection,
   OfferSection,
+  LpFeaturesSection,
+  LpRoadmapSection,
+  LpInvestmentSection,
+  LpOfferSection,
+  FormalizationSection,
   SupportSection,
   CtaSection,
 ];

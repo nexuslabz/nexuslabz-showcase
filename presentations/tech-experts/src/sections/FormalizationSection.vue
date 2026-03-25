@@ -4,41 +4,47 @@ defineProps({ active: Boolean });
 const items = [
   {
     icon: '📄',
-    title: 'Contrato de Prestação de Serviços',
-    desc: 'Tudo formalizado em contrato com escopo, prazos, entregáveis, responsabilidades e condições de pagamento bem definidos para proteger ambas as partes.',
+    title: 'Contrato',
+    desc: 'Escopo, prazos, entregáveis, responsabilidades e condições de pagamento. Tudo formalizado para proteger ambas as partes.',
   },
   {
     icon: '🏢',
-    title: 'Emissão de NFS-e no CNPJ',
-    desc: 'Toda nota fiscal será emitida no CNPJ da Colozzo Tech Ltda. (razão social atual, em processo de alteração para Nexus Labz Ltda.).',
+    title: 'Emissão de Nota Fiscal',
+    desc: 'Nota fiscal emitida pela Colozzo Tech Ltda. (razão social atual, em processo de alteração para Nexus Labz Ltda.).',
   },
   {
     icon: '⚡',
     title: 'Powered by Nexus Labz',
-    desc: 'Todo o ecossistema será desenvolvido, hospedado e mantido pela Nexus Labz, garantindo suporte contínuo, evolução técnica e estabilidade a longo prazo.',
+    desc: 'Desenvolvimento, hospedagem e manutenção 100% Nexus Labz. Suporte contínuo, evolução técnica e estabilidade garantida.',
   },
   {
-    icon: '🤝',
-    title: 'Transparência Total',
-    desc: 'Você acompanha o progresso em tempo real, com reuniões de alinhamento e comunicação direta durante todo o processo.',
+    icon: '🔍',
+    title: 'Transparência em tempo real',
+    desc: 'Acompanhamento do progresso ao vivo, reuniões de alinhamento e canal direto de comunicação durante todo o projeto.',
   },
 ];
 </script>
 
 <template>
   <section class="formal">
+    <div class="formal__bg">
+      <div class="formal__glow" />
+    </div>
+
     <div class="formal__content">
-      <span class="tag">Segurança & Formalização</span>
+      <span class="tag tag--nexus">Segurança</span>
 
-      <h2 class="formal__title">Tudo registrado e <span class="text-gold">formalizado</span></h2>
+      <h2 class="formal__title">
+        Profissionalismo do <span class="formal__highlight">início ao fim.</span>
+      </h2>
 
-      <p class="formal__desc">
-        Trabalhamos com total transparência e segurança jurídica. Cada etapa do projeto é respaldada
-        por contrato e documentação fiscal.
+      <p class="formal__subtitle">
+        Contrato, nota fiscal, acompanhamento em tempo real.
+        <strong>Sem surpresas.</strong>
       </p>
 
       <div class="formal__grid">
-        <div v-for="(item, i) in items" :key="i" class="card formal__card">
+        <div v-for="(item, i) in items" :key="i" class="formal__card">
           <span class="formal__icon">{{ item.icon }}</span>
           <h3 class="formal__card-title">{{ item.title }}</h3>
           <p class="formal__card-desc">{{ item.desc }}</p>
@@ -56,56 +62,102 @@ const items = [
   align-items: center;
   justify-content: center;
   background: var(--nexus-grey);
-  padding: 3rem;
+  position: relative;
+  padding: 2.5rem 3rem;
+  overflow: hidden;
+}
+
+.formal__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.formal__glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+  top: -80px;
+  right: -80px;
 }
 
 .formal__content {
+  position: relative;
+  z-index: 1;
   max-width: 1000px;
   width: 100%;
+}
+
+.tag--nexus {
+  background: var(--neon-gold-08);
+  border-color: var(--neon-gold);
+  color: var(--neon-gold);
+  font-weight: 700;
 }
 
 .formal__title {
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   font-weight: 700;
   color: var(--pure-white);
-  margin: 1.5rem 0 0.75rem;
+  margin: 1.25rem 0 0.6rem;
   letter-spacing: -0.02em;
 }
 
-.formal__desc {
-  font-size: 1rem;
-  color: var(--white-70);
-  line-height: 1.6;
-  max-width: 600px;
-  margin-bottom: 2.5rem;
+.formal__highlight {
+  background: linear-gradient(90deg, var(--neon-gold), #f0d060);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.formal__subtitle {
+  font-size: 0.95rem;
+  color: var(--white-50);
+  line-height: 1.55;
+  max-width: 480px;
+  margin-bottom: 2rem;
+}
+
+.formal__subtitle strong {
+  color: var(--pure-white);
 }
 
 .formal__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .formal__card {
-  display: flex;
-  flex-direction: column;
+  padding: 1.15rem;
+  border-radius: var(--radius-md, 8px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.3s;
+}
+
+.formal__card:hover {
+  border-color: var(--neon-gold-15);
 }
 
 .formal__icon {
-  font-size: 1.8rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: 0.6rem;
 }
 
 .formal__card-title {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 700;
   color: var(--pure-white);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.25rem;
 }
 
 .formal__card-desc {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   color: var(--white-50);
-  line-height: 1.55;
+  line-height: 1.5;
 }
 </style>

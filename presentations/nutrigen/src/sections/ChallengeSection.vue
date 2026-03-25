@@ -2,33 +2,69 @@
 defineProps({ active: Boolean });
 
 const challenges = [
-  { label: 'Autoridade', desc: 'Posicionar o Nutrigen como referência no seu nicho de atuação' },
   {
-    label: 'Captação',
-    desc: 'Atrair pacientes qualificados via Google, redes sociais e indicações',
+    icon: '🚫',
+    pain: 'Sem site, sem autoridade.',
+    detail:
+      'O paciente busca no Google, não encontra o Nutrigen e marca com outro profissional que já tem presença digital.',
   },
-  { label: 'Conversão', desc: 'Transformar visitantes curiosos em pacientes agendados' },
-  { label: 'Escala', desc: 'Automatizar processos para crescer sem trabalhar mais horas' },
+  {
+    icon: '🔀',
+    pain: 'Instagram não é funil.',
+    detail:
+      'Postar conteúdo sem um site de conversão por trás é como abrir a porta e não ter onde receber o paciente.',
+  },
+  {
+    icon: '🕳️',
+    pain: 'Interesse que vira silêncio.',
+    detail:
+      'Sem funil e sem agendamento online, o potencial paciente perde o interesse antes de marcar a consulta.',
+  },
+  {
+    icon: '🧱',
+    pain: 'Crescimento depende só de você.',
+    detail:
+      'Sem estrutura digital, você traz cada paciente na marra. Nada trabalha de forma automática por você.',
+  },
 ];
 </script>
 
 <template>
   <section class="challenge">
+    <div class="challenge__bg">
+      <div class="challenge__glow" />
+    </div>
+
     <div class="challenge__content">
-      <span class="tag">O Desafio</span>
+      <span class="tag tag--nexus">O Problema</span>
 
       <h2 class="challenge__title">
-        Como transformar o Nutrigen<br />
-        em uma <span class="text-gold">máquina de captação?</span>
+        Sem digital, o Nutrigen<br />
+        <span class="challenge__highlight">já nasce limitado.</span>
       </h2>
 
-      <div class="challenge__list">
-        <div v-for="(item, i) in challenges" :key="i" class="card challenge__item">
-          <div class="challenge__number">{{ String(i + 1).padStart(2, '0') }}</div>
-          <div class="challenge__info">
-            <h3 class="challenge__label">{{ item.label }}</h3>
-            <p class="challenge__desc">{{ item.desc }}</p>
+      <p class="challenge__subtitle">
+        Se você começa sem presença digital em 2026, já começa atrás. Essas falhas custam pacientes
+        desde o primeiro dia:
+      </p>
+
+      <div class="challenge__grid">
+        <div v-for="(c, i) in challenges" :key="i" class="challenge__card">
+          <span class="challenge__icon">{{ c.icon }}</span>
+          <div class="challenge__card-body">
+            <h3 class="challenge__pain">{{ c.pain }}</h3>
+            <p class="challenge__detail">{{ c.detail }}</p>
           </div>
+        </div>
+      </div>
+
+      <div class="challenge__bottom">
+        <div class="challenge__verdict">
+          <span class="challenge__verdict-icon">🚨</span>
+          <p>
+            Enquanto isso não mudar, você perde tempo, consultas e ritmo de crescimento. Cada dia
+            sem presença digital é uma <strong>oportunidade que não volta</strong>.
+          </p>
         </div>
       </div>
     </div>
@@ -43,56 +79,138 @@ const challenges = [
   align-items: center;
   justify-content: center;
   background: var(--nexus-grey);
-  padding: 3rem;
+  position: relative;
+  padding: 2.5rem 3rem;
+  overflow: hidden;
+}
+
+.challenge__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.challenge__glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .challenge__content {
-  max-width: 800px;
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
   width: 100%;
 }
 
+.tag--nexus {
+  background: var(--neon-gold-08);
+  border-color: var(--neon-gold);
+  color: var(--neon-gold);
+  font-weight: 700;
+}
+
 .challenge__title {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 700;
   color: var(--pure-white);
-  margin: 1.5rem 0 2.5rem;
-  line-height: 1.2;
+  margin: 1.25rem 0 0.75rem;
+  line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
-.challenge__list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
+.challenge__highlight {
+  background: linear-gradient(90deg, var(--neon-gold), #f0d060);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.challenge__item {
+.challenge__subtitle {
+  font-size: 0.92rem;
+  color: var(--white-50);
+  line-height: 1.5;
+  max-width: 600px;
+  margin-bottom: 1.75rem;
+}
+
+.challenge__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.challenge__card {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
+  gap: 0.85rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-md, 8px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(220, 70, 70, 0.1);
+  transition: border-color 0.3s;
 }
 
-.challenge__number {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--neon-gold);
-  opacity: 0.4;
+.challenge__card:hover {
+  border-color: rgba(220, 70, 70, 0.25);
+}
+
+.challenge__icon {
+  font-size: 1.2rem;
   flex-shrink: 0;
-  line-height: 1;
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
 }
 
-.challenge__label {
-  font-size: 0.95rem;
-  font-weight: 600;
+.challenge__card-body {
+  min-width: 0;
+}
+
+.challenge__pain {
+  font-size: 0.88rem;
+  font-weight: 700;
   color: var(--pure-white);
   margin-bottom: 0.2rem;
 }
 
-.challenge__desc {
-  font-size: 0.82rem;
+.challenge__detail {
+  font-size: 0.78rem;
   color: var(--white-50);
   line-height: 1.5;
+}
+
+.challenge__bottom {
+  margin-top: 1.5rem;
+}
+
+.challenge__verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  background: rgba(220, 70, 70, 0.08);
+  border: 1px solid rgba(220, 70, 70, 0.2);
+  border-radius: var(--radius-md, 8px);
+}
+
+.challenge__verdict-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.challenge__verdict p {
+  font-size: 0.85rem;
+  color: var(--white-70);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.challenge__verdict strong {
+  color: #f07070;
+  font-weight: 600;
 }
 </style>

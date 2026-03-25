@@ -4,85 +4,80 @@ defineProps({ active: Boolean });
 const categories = [
   {
     icon: '🧭',
-    title: 'Estratégia & Planejamento',
+    title: 'Estratégia e Conteúdo',
     items: [
-      { name: 'Consultoria Estratégica & Discovery', value: 'R$ 2.500' },
-      { name: 'Mapeamento de Produtos & Público', value: 'R$ 1.500' },
-      { name: 'Estratégia de Funil por Produto', value: 'R$ 1.500' },
+      { name: 'Consultoria e Discovery', value: 'R$ 1.200' },
+      { name: 'Estratégia de copy e conversão', value: 'R$ 1.500' },
     ],
-    subtotal: 'R$ 5.500',
+    subtotal: 'R$ 2.700',
   },
   {
     icon: '🎨',
-    title: 'Design & UX',
+    title: 'Design e Desenvolvimento',
     items: [
-      { name: 'Design UI/UX do Hub Central', value: 'R$ 3.000' },
-      { name: 'Design de 5 Landing Pages', value: 'R$ 3.500' },
-      { name: 'Responsividade & Prototipação', value: 'R$ 1.500' },
+      { name: 'Design UI/UX da landing page', value: 'R$ 2.000' },
+      { name: 'Desenvolvimento frontend responsivo', value: 'R$ 2.500' },
     ],
-    subtotal: 'R$ 8.000',
+    subtotal: 'R$ 4.500',
   },
   {
     icon: '⚙️',
-    title: 'Desenvolvimento',
+    title: 'Infraestrutura',
     items: [
-      { name: 'Hub Central', value: 'R$ 4.000' },
-      { name: '5 Landing Pages', value: 'R$ 6.000' },
-      { name: 'Integrações (WhatsApp, Analytics, Forms)', value: 'R$ 1.800' },
-      { name: 'SEO & GEO On-page + Indexação', value: 'R$ 1.200' },
+      { name: 'Hosting, domínio e SSL', value: 'R$ 800' },
+      { name: 'SEO básico, Analytics e Search Console', value: 'R$ 500' },
     ],
-    subtotal: 'R$ 13.000',
+    subtotal: 'R$ 1.300',
   },
   {
     icon: '🛡️',
-    title: 'Infraestrutura & Suporte',
+    title: 'Entregáveis e Suporte',
     items: [
-      { name: 'Deploy, Domínio & SSL', value: 'R$ 1.200' },
-      { name: 'Performance & Core Web Vitals', value: 'R$ 800' },
-      { name: '6 Meses de Suporte Nexus Gold', value: 'R$ 1.500' },
+      { name: 'Integrações (WhatsApp, formulários)', value: 'R$ 750' },
+      { name: '3 Meses de Suporte Nexus Gold', value: 'R$ 750' },
     ],
-    subtotal: 'R$ 3.500',
+    subtotal: 'R$ 1.500',
   },
 ];
 </script>
 
 <template>
-  <section class="investment">
-    <div class="investment__bg">
-      <div class="investment__glow" />
+  <section class="lpi">
+    <div class="lpi__bg">
+      <div class="lpi__glow" />
     </div>
 
-    <div class="investment__content">
+    <div class="lpi__content">
+      <div class="lpi__offer-tag"><span>Oferta 2</span></div>
       <span class="tag tag--nexus">Investimento</span>
 
-      <h2 class="investment__title">
-        Cada centavo <span class="investment__highlight">justificado.</span>
-      </h2>
+      <h2 class="lpi__title">Cada centavo <span class="lpi__highlight">justificado.</span></h2>
 
-      <div class="investment__grid">
-        <div v-for="(cat, i) in categories" :key="i" class="investment__card">
-          <div class="investment__card-header">
-            <span class="investment__card-icon">{{ cat.icon }}</span>
-            <span class="investment__card-title">{{ cat.title }}</span>
+      <div class="lpi__grid">
+        <div v-for="(cat, i) in categories" :key="i" class="lpi__card">
+          <div class="lpi__card-header">
+            <span class="lpi__card-icon">{{ cat.icon }}</span>
+            <span class="lpi__card-title">{{ cat.title }}</span>
           </div>
-          <ul class="investment__items">
+          <ul class="lpi__items">
             <li v-for="(item, j) in cat.items" :key="j">
-              <span class="investment__item-name">{{ item.name }}</span>
-              <span class="investment__item-value">{{ item.value }}</span>
+              <span class="lpi__item-name">{{ item.name }}</span>
+              <span class="lpi__item-value">{{ item.value }}</span>
             </li>
           </ul>
-          <div class="investment__card-subtotal">
+          <div class="lpi__card-subtotal">
             <span>Subtotal</span>
             <span>{{ cat.subtotal }}</span>
           </div>
         </div>
       </div>
 
-      <div class="investment__total">
-        <div class="investment__total-label">Valor total do ecossistema</div>
-        <div class="investment__total-price">R$ 30.000</div>
-        <div class="investment__total-desc">
-          Hub + 5 Landing Pages · SEO & GEO · 6 meses de suporte · do zero ao resultado
+      <div class="lpi__total">
+        <div class="lpi__total-label">Valor total do pacote</div>
+        <div class="lpi__total-price">R$ 10.000</div>
+        <div class="lpi__total-desc">
+          Landing page no ar, infraestrutura, integrações e 3 meses de suporte. Do briefing à
+          primeira conversão.
         </div>
       </div>
     </div>
@@ -90,7 +85,7 @@ const categories = [
 </template>
 
 <style scoped>
-.investment {
+.lpi {
   width: 100%;
   height: 100%;
   display: flex;
@@ -102,13 +97,13 @@ const categories = [
   overflow: hidden;
 }
 
-.investment__bg {
+.lpi__bg {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
 
-.investment__glow {
+.lpi__glow {
   position: absolute;
   width: 600px;
   height: 600px;
@@ -119,11 +114,30 @@ const categories = [
   transform: translateX(-50%);
 }
 
-.investment__content {
+.lpi__content {
   position: relative;
   z-index: 1;
   max-width: 1000px;
   width: 100%;
+  text-align: center;
+}
+
+.lpi__offer-tag {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.lpi__offer-tag span {
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--neon-gold);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.85rem;
+  border-radius: 100px;
 }
 
 .tag--nexus {
@@ -133,7 +147,7 @@ const categories = [
   font-weight: 700;
 }
 
-.investment__title {
+.lpi__title {
   font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   font-weight: 700;
   color: var(--pure-white);
@@ -141,21 +155,22 @@ const categories = [
   letter-spacing: -0.02em;
 }
 
-.investment__highlight {
+.lpi__highlight {
   background: linear-gradient(90deg, var(--neon-gold), #f0d060);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.investment__grid {
+.lpi__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
   margin-bottom: 1rem;
+  text-align: left;
 }
 
-.investment__card {
+.lpi__card {
   display: flex;
   flex-direction: column;
   padding: 0.85rem 1rem;
@@ -164,7 +179,7 @@ const categories = [
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.investment__card-header {
+.lpi__card-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -173,11 +188,11 @@ const categories = [
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.investment__card-icon {
+.lpi__card-icon {
   font-size: 0.95rem;
 }
 
-.investment__card-title {
+.lpi__card-title {
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--neon-gold);
@@ -185,7 +200,7 @@ const categories = [
   letter-spacing: 0.05em;
 }
 
-.investment__items {
+.lpi__items {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -195,19 +210,19 @@ const categories = [
   flex: 1;
 }
 
-.investment__items li {
+.lpi__items li {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 0.75rem;
 }
 
-.investment__item-name {
+.lpi__item-name {
   font-size: 0.72rem;
   color: var(--white-50);
 }
 
-.investment__item-value {
+.lpi__item-value {
   font-size: 0.72rem;
   color: var(--pure-white);
   font-weight: 500;
@@ -215,7 +230,7 @@ const categories = [
   white-space: nowrap;
 }
 
-.investment__card-subtotal {
+.lpi__card-subtotal {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -227,12 +242,12 @@ const categories = [
   color: var(--white-30);
 }
 
-.investment__card-subtotal span:last-child {
+.lpi__card-subtotal span:last-child {
   color: var(--white-70);
   font-variant-numeric: tabular-nums;
 }
 
-.investment__total {
+.lpi__total {
   text-align: center;
   padding: 1rem 1.5rem;
   border-radius: var(--radius-lg);
@@ -243,7 +258,7 @@ const categories = [
     0 0 80px rgba(212, 175, 55, 0.05);
 }
 
-.investment__total-label {
+.lpi__total-label {
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -252,7 +267,7 @@ const categories = [
   margin-bottom: 0.25rem;
 }
 
-.investment__total-price {
+.lpi__total-price {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   color: var(--neon-gold);
@@ -260,7 +275,7 @@ const categories = [
   text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
 }
 
-.investment__total-desc {
+.lpi__total-desc {
   font-size: 0.72rem;
   color: var(--white-30);
   margin-top: 0.15rem;
