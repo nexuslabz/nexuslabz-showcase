@@ -1,5 +1,33 @@
 <script setup>
+import { ref } from 'vue';
+
 defineProps({ active: Boolean });
+
+const lockedParcelado = ref(true);
+const lockedPix = ref(true);
+const unlockingParcelado = ref(false);
+const unlockingPix = ref(false);
+
+function unlockCard(card) {
+  if (card === 'parcelado' && lockedParcelado.value) {
+    unlockingParcelado.value = true;
+    setTimeout(() => {
+      lockedParcelado.value = false;
+      setTimeout(() => {
+        unlockingParcelado.value = false;
+      }, 400);
+    }, 300);
+  }
+  if (card === 'pix' && lockedPix.value) {
+    unlockingPix.value = true;
+    setTimeout(() => {
+      lockedPix.value = false;
+      setTimeout(() => {
+        unlockingPix.value = false;
+      }, 400);
+    }, 300);
+  }
+}
 </script>
 
 <template>
@@ -25,26 +53,109 @@ defineProps({ active: Boolean });
       </div>
 
       <div class="offer__cards">
-        <div class="offer__card offer__card--installment">
-          <div class="offer__card-header">Parcelado</div>
-          <div class="offer__card-price">R$ 25.500</div>
-          <div class="offer__card-detail">até 12x de R$ 2.550,01</div>
-          <div class="offer__card-method">via Link de Pagamento · Lucre+</div>
-          <div class="offer__card-discount">
-            <span class="offer__card-discount-value">- R$ 4.500</span>
-            <span class="offer__card-discount-pct">15% OFF</span>
+        <div class="offer__card-wrap" @click="unlockCard('parcelado')">
+          <div
+            class="offer__card offer__card--installment"
+            :class="{ 'offer__card--locked': lockedParcelado }"
+          >
+            <div class="offer__ribbon">BRINDE</div>
+            <div class="offer__card-header">Parcelado</div>
+            <div class="offer__card-price">R$ 27.000</div>
+            <div class="offer__card-detail">até 10x sem juros de R$ 2.700,00</div>
+            <div class="offer__card-method">via Link de Pagamento · Mercado Pago</div>
+            <div class="offer__card-discount">
+              <span class="offer__card-discount-value">- R$ 3.000</span>
+              <span class="offer__card-discount-pct">10% OFF</span>
+            </div>
+          </div>
+          <div
+            class="offer__lock"
+            :class="{
+              'offer__lock--unlocking': unlockingParcelado,
+              'offer__lock--hidden': !lockedParcelado && !unlockingParcelado,
+            }"
+          >
+            <svg
+              v-if="!unlockingParcelado"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <svg
+              v-else
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 5-5 5 5 0 0 1 5 5" />
+            </svg>
           </div>
         </div>
 
-        <div class="offer__card offer__card--pix">
-          <div class="offer__card-badge">Melhor Condição</div>
-          <div class="offer__card-header">À Vista · PIX</div>
-          <div class="offer__card-price">R$ 21.000</div>
-          <div class="offer__card-detail">Transferência única via PIX</div>
-          <div class="offer__card-method">Pagamento imediato, sem parcelas</div>
-          <div class="offer__card-discount">
-            <span class="offer__card-discount-value">- R$ 9.000</span>
-            <span class="offer__card-discount-pct">30% OFF</span>
+        <div class="offer__card-wrap" @click="unlockCard('pix')">
+          <div class="offer__card-badge" :class="{ 'offer__card-badge--locked': lockedPix }">
+            Melhor Condição
+          </div>
+          <div class="offer__card offer__card--pix" :class="{ 'offer__card--locked': lockedPix }">
+            <div class="offer__ribbon">BRINDE</div>
+            <div class="offer__card-header">À Vista · PIX</div>
+            <div class="offer__card-price">R$ 21.000</div>
+            <div class="offer__card-detail">Transferência única via PIX</div>
+            <div class="offer__card-method">Pagamento imediato, sem parcelas</div>
+            <div class="offer__card-discount">
+              <span class="offer__card-discount-value">- R$ 9.000</span>
+              <span class="offer__card-discount-pct">30% OFF</span>
+            </div>
+          </div>
+          <div
+            class="offer__lock"
+            :class="{
+              'offer__lock--unlocking': unlockingPix,
+              'offer__lock--hidden': !lockedPix && !unlockingPix,
+            }"
+          >
+            <svg
+              v-if="!unlockingPix"
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <svg
+              v-else
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 5-5 5 5 0 0 1 5 5" />
+            </svg>
           </div>
         </div>
       </div>
@@ -58,9 +169,14 @@ defineProps({ active: Boolean });
       </div>
 
       <p class="offer__note">
-        As duas condições incluem o pacote completo: Hub + 5 LPs, infraestrutura, SEO & GEO e 6
-        meses de suporte Nexus Gold.
+        As duas condições incluem o pacote completo: Hub + 5 LPs, infraestrutura, SEO e GEO e 6
+        meses de Nexus Gold.
       </p>
+
+      <div class="offer__bonus-note">
+        <span>🎁</span>
+        <span>Brinde: página de conversão simples para o <strong>Nutrigen</strong></span>
+      </div>
     </div>
   </section>
 </template>
@@ -185,6 +301,12 @@ defineProps({ active: Boolean });
   padding: 1.75rem 1.25rem;
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+
+.offer__card-wrap {
+  position: relative;
+  cursor: pointer;
 }
 
 .offer__card--installment {
@@ -221,6 +343,7 @@ defineProps({ active: Boolean });
   padding: 0.25rem 0.85rem;
   border-radius: 100px;
   white-space: nowrap;
+  z-index: 30;
 }
 
 .offer__card-header {
@@ -304,11 +427,105 @@ defineProps({ active: Boolean });
   color: var(--neon-gold);
 }
 
+.offer__ribbon {
+  position: absolute;
+  right: -2.75rem;
+  top: 1.25rem;
+  z-index: 20;
+  transform: rotate(45deg);
+  white-space: nowrap;
+  border-top: 1px solid #4caf50;
+  border-bottom: 1px solid #4caf50;
+  background: rgba(76, 175, 80, 0.85);
+  padding: 0.35rem 3.5rem;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  box-shadow: 0 0 16px rgba(76, 175, 80, 0.3);
+}
+
+.offer__bonus-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  background: rgba(76, 175, 80, 0.08);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  color: var(--white-70);
+  margin-top: 0.5rem;
+}
+
+.offer__bonus-note strong {
+  color: #66bb6a;
+}
+
 .offer__note {
   font-size: 0.75rem;
   color: var(--white-30);
-  max-width: 550px;
+  max-width: 600px;
   margin: 0 auto;
   line-height: 1.5;
+}
+
+.offer__card--locked {
+  filter: blur(12px);
+  user-select: none;
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.offer__card:not(.offer__card--locked) {
+  filter: blur(0);
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.offer__card-badge--locked {
+  filter: blur(6px);
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.offer__card-badge:not(.offer__card-badge--locked) {
+  filter: blur(0);
+  transition: filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.offer__lock {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-50);
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.offer__lock svg {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
+}
+
+.offer__lock--unlocking {
+  opacity: 1;
+  transform: scale(1.1);
+  color: var(--neon-gold);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.offer__lock--hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 </style>

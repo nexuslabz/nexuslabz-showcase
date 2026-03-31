@@ -56,7 +56,7 @@ const timeline = [
           <span class="cta__info-icon">💳</span>
           <div>
             <strong>Pagamento</strong>
-            <p>PIX ou Lucre+ (até 12x)</p>
+            <p>PIX ou até 10x sem juros · Mercado Pago</p>
           </div>
         </div>
         <div class="cta__info-item">
