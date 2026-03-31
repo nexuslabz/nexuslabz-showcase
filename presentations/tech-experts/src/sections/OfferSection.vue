@@ -114,8 +114,7 @@ function unlockCard(card) {
             <div class="offer__ribbon">BRINDE</div>
             <div class="offer__card-header">À Vista · PIX</div>
             <div class="offer__card-price">R$ 21.000</div>
-            <div class="offer__card-detail">Transferência única via PIX</div>
-            <div class="offer__card-method">Pagamento imediato, sem parcelas</div>
+            <div class="offer__card-detail">Transferência via PIX</div>
             <div class="offer__card-discount">
               <span class="offer__card-discount-value">- R$ 9.000</span>
               <span class="offer__card-discount-pct">30% OFF</span>
