@@ -374,6 +374,10 @@ function unlockCard(card) {
   margin-bottom: 1rem;
 }
 
+.offer__card--pix .offer__card-detail {
+  margin-bottom: 1.2rem;
+}
+
 .offer__card-discount {
   display: inline-flex;
   align-items: center;
