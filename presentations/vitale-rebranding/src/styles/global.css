@@ -1,0 +1,21 @@
+@import '@theme/styles/index.css';
+@import '@theme/styles/animations.css';
+@import '@theme/styles/utilities.css';
+
+:root {
+  --vitale-purple: #a886d1;
+  --vitale-blue: #8aa4cc;
+  --vitale-teal: #6cc2c8;
+  --vitale-bg-light: #f4f1de;
+  --vitale-bg-dark: #1c1c1e;
+
+  --vitale-purple-15: rgba(168, 134, 209, 0.15);
+  --vitale-purple-08: rgba(168, 134, 209, 0.08);
+  --vitale-blue-15: rgba(138, 164, 204, 0.15);
+  --vitale-teal-15: rgba(108, 194, 200, 0.15);
+
+  --font-cinzel: 'Cinzel', serif;
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-baskervville-sc: 'Baskervville SC', serif;
+  --font-baskervville: 'Baskervville', serif;
+}
