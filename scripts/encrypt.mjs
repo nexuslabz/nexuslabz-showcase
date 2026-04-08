@@ -48,6 +48,16 @@ const targets = [
     dir: '_site/tech-experts',
     instructions: 'Digite a senha para acessar esta apresentação.',
   },
+  {
+    input: '_site/rebrands/index.html',
+    dir: '_site/rebrands',
+    instructions: 'Digite a senha para acessar esta área.',
+  },
+  {
+    input: '_site/vitale-rebranding/index.html',
+    dir: '_site/vitale-rebranding',
+    instructions: 'Digite a senha para acessar esta apresentação.',
+  },
 ];
 
 for (const t of targets) {

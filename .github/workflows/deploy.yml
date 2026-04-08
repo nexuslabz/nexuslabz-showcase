@@ -57,6 +57,8 @@ jobs:
           cp public/favicon.png _site/
           mkdir -p _site/proposals
           cp public/proposals/index.html _site/proposals/
+          mkdir -p _site/rebrands
+          cp public/rebrands/index.html _site/rebrands/
           for dir in presentations/*/dist; do
             name=$(basename $(dirname "$dir"))
             cp -r "$dir" "_site/$name"
@@ -92,6 +94,30 @@ jobs:
 
           npx staticrypt _site/tech-experts/index.html \
             -d _site/tech-experts \
+            --short \
+            -t shared/staticrypt-template.html \
+            --template-title "Acesso Restrito" \
+            --template-instructions "Digite a senha para acessar esta apresentação." \
+            --template-button "DESBLOQUEAR" \
+            --template-placeholder "Senha" \
+            --template-remember "Lembrar de mim" \
+            --template-error "Senha incorreta!" \
+            --remember 7
+
+          npx staticrypt _site/rebrands/index.html \
+            -d _site/rebrands \
+            --short \
+            -t shared/staticrypt-template.html \
+            --template-title "Acesso Restrito" \
+            --template-instructions "Digite a senha para acessar esta área." \
+            --template-button "DESBLOQUEAR" \
+            --template-placeholder "Senha" \
+            --template-remember "Lembrar de mim" \
+            --template-error "Senha incorreta!" \
+            --remember 7
+
+          npx staticrypt _site/vitale-rebranding/index.html \
+            -d _site/vitale-rebranding \
             --short \
             -t shared/staticrypt-template.html \
             --template-title "Acesso Restrito" \
